@@ -1,0 +1,2 @@
+# SafeCheck
+Scam detection App

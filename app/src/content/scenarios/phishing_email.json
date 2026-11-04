@@ -1,0 +1,1045 @@
+{
+  "templates": [
+    {
+      "id": "email_gra_tax_penalty_006",
+      "category": "EMAIL_PHISHING",
+      "platform": "EMAIL",
+      "difficulty": 6,
+      "phase": 4,
+      "emotion": ["panic", "authority", "compliance"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "business_owner",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "GRA E-Invoicing",
+          "role": "fake_gra",
+          "avatar": "⚖️"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GRA E-Invoicing",
+          "text": "FINAL NOTICE: Your business has an outstanding penalty of GHS 4,500 for late VAT returns for the previous quarter."
+        },
+        {
+          "id": "m2",
+          "sender": "GRA E-Invoicing",
+          "text": "Failure to settle this amount within 48 hours will result in a court summons and immediate locking of your shop premises."
+        },
+        {
+          "id": "m3",
+          "sender": "GRA E-Invoicing",
+          "text": "Click the Ghana.gov secure payment portal link to resolve this: https://gra-gh-gov.tax-portal-login.com"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and pay the fine to avoid shop closure",
+          "resultKey": "LOSS",
+          "topicKey": "EMAIL_PHISHING",
+          "riskDelta": {
+            "financial": 20,
+            "password": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Visit the official GRA portal directly or go to their nearest office",
+          "resultKey": "SAFE",
+          "topicKey": "EMAIL_PHISHING",
+          "riskDelta": {
+            "financial": -15,
+            "password": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Authority intimidation and fake government domain",
+        "warningSigns": [
+          "The domain 'gra-gh-gov.tax-portal-login.com' is fake; real government sites end in '.gov.gh'",
+          "Scammers use aggressive threats (shop locking, court summons) to force immediate action",
+          "Official GRA emails usually address you by your registered TIN/Company Name, not generic greetings"
+        ],
+        "topicKey": "EMAIL_PHISHING"
+      }
+    },
+    {
+      "id": "email_ssnit_statement_007",
+      "category": "EMAIL_PHISHING",
+      "platform": "EMAIL",
+      "difficulty": 5,
+      "phase": 3,
+      "emotion": ["concern", "curiosity", "trust"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "contributor",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "SSNIT Info",
+          "role": "fake_ssnit",
+          "avatar": "🏢"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "SSNIT Info",
+          "text": "Dear Contributor, your annual SSNIT pension statement is ready for review."
+        },
+        {
+          "id": "m2",
+          "sender": "SSNIT Info",
+          "text": "We noticed a discrepancy in your Tier-1 contributions from your current employer, which may affect your future payout."
+        },
+        {
+          "id": "m3",
+          "sender": "SSNIT Info",
+          "text": "Please download the attached encrypted document (SSNIT_Statement_2023.pdf.exe) and log in with your email password to review the missing funds."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Download the attachment and enter your password to check your funds",
+          "resultKey": "LOSS",
+          "topicKey": "EMAIL_PHISHING",
+          "riskDelta": {
+            "password": 25,
+            "identity": 10
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Do not download the file and log into the SSNIT app directly",
+          "resultKey": "SAFE",
+          "topicKey": "EMAIL_PHISHING",
+          "riskDelta": {
+            "password": -15,
+            "identity": -5
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Malicious attachment disguised as pension document",
+        "warningSigns": [
+          "The attachment ends in '.exe', which is a dangerous executable file, not a real PDF",
+          "Legitimate PDFs do not ask you to input your email password to open them",
+          "Scammers exploit fears about missing pension funds to make you act carelessly"
+        ],
+        "topicKey": "EMAIL_PHISHING"
+      }
+    },
+    {
+      "id": "email_gnpc_job_offer_008",
+      "category": "ADVANCE_FEE_FRAUD",
+      "platform": "EMAIL",
+      "difficulty": 7,
+      "phase": 4,
+      "emotion": ["excitement", "hope", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "job_seeker",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "GNPC Careers",
+          "role": "fake_recruiter",
+          "avatar": "🛢️"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GNPC Careers",
+          "text": "Congratulations! Based on your LinkedIn profile, you have been selected for the GNPC Graduate Trainee Program. Starting Salary: GHS 8,500/month."
+        },
+        {
+          "id": "m2",
+          "sender": "GNPC Careers",
+          "text": "Your induction is scheduled for Monday at the Accra Head Office. Attached is your official offer letter."
+        },
+        {
+          "id": "m3",
+          "sender": "GNPC Careers",
+          "text": "To process your staff ID and mandatory background check, please pay the GHS 450 processing fee via the HR MoMo portal link: gnpc-hr-onboarding.com before 5 PM today."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the GHS 450 fee quickly to secure this high-paying job",
+          "resultKey": "LOSS",
+          "topicKey": "ADVANCE_FEE_FRAUD",
+          "riskDelta": {
+            "financial": 25,
+            "identity": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the email. Real companies do not charge processing fees.",
+          "resultKey": "SAFE",
+          "topicKey": "ADVANCE_FEE_FRAUD",
+          "riskDelta": {
+            "financial": -15,
+            "identity": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake corporate job offer with advance fee request",
+        "warningSigns": [
+          "Legitimate organizations in Ghana (especially state agencies like GNPC) will never ask you to pay for background checks or IDs via MoMo",
+          "Offers for high-paying jobs without a formal interview process are always scams",
+          "The urgency ('before 5 PM today') is designed to prevent you from verifying the offer"
+        ],
+        "topicKey": "ADVANCE_FEE_FRAUD"
+      }
+    },
+    {
+      "id": "email_mtn_momo_statement_009",
+      "category": "EMAIL_PHISHING",
+      "platform": "EMAIL",
+      "difficulty": 6,
+      "phase": 4,
+      "emotion": ["trust", "routine", "compliance"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "merchant",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "MoMo Business Services",
+          "role": "fake_telco",
+          "avatar": "🟡"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MoMo Business Services",
+          "text": "Dear Merchant, your monthly MoMo transaction statement for the previous month has been generated."
+        },
+        {
+          "id": "m2",
+          "sender": "MoMo Business Services",
+          "text": "To ensure data privacy, your statement is securely hosted on our web portal."
+        },
+        {
+          "id": "m3",
+          "sender": "MoMo Business Services",
+          "text": "Click here: mtn-momo-statement-portal.web.app and enter your phone number and 4-digit MoMo PIN to download the document."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and enter your MoMo PIN to view the statement",
+          "resultKey": "LOSS",
+          "topicKey": "EMAIL_PHISHING",
+          "riskDelta": {
+            "financial": 30,
+            "password": 20
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Delete the email. You should never enter your MoMo PIN on a website.",
+          "resultKey": "SAFE",
+          "topicKey": "EMAIL_PHISHING",
+          "riskDelta": {
+            "financial": -20,
+            "password": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Routine business email used to harvest MoMo PINs",
+        "warningSigns": [
+          "Telecommunication companies will NEVER ask you to type your Mobile Money PIN into a website link",
+          "The domain uses '.web.app', which is a free hosting service, not an official MTN corporate domain",
+          "Real statements are either sent directly as password-protected PDFs or accessed via the official USSD/App"
+        ],
+        "topicKey": "EMAIL_PHISHING"
+      }
+    },
+    {
+      "id": "ig_vendor_pay_before_delivery_010",
+      "category": "ONLINE_SHOPPING_SCAM",
+      "platform": "INSTAGRAM",
+      "difficulty": 6,
+      "phase": 4,
+      "emotion": ["excitement", "FOMO", "trust"],
+      "isLegit": false,
+      "characters": {
+        "vendor": {
+          "name": "Tech Hub GH (@techhub_gh_official)",
+          "role": "fake_vendor",
+          "avatar": "📱"
+        },
+        "buyer": {
+          "name": "You",
+          "role": "customer",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Tech Hub GH (@techhub_gh_official)",
+          "text": "Hello boss, yes the iPhone 13 Pro Max is on a flash sale for GHS 4,500. It's slightly used, UK used."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "That's a very good price. Can I do pay on delivery? I am at Madina."
+        },
+        {
+          "id": "m3",
+          "sender": "Tech Hub GH (@techhub_gh_official)",
+          "text": "Sorry boss, we stopped pay on delivery because dispatch riders were being robbed, and some customers waste our time."
+        },
+        {
+          "id": "m4",
+          "sender": "Tech Hub GH (@techhub_gh_official)",
+          "text": "This is the last piece left in the shop. Send the money to our merchant line 054XXXXXXX (Name: Kwame Osei) so I can give it to the rider right now."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 4,500 to secure the phone before it sells out",
+          "resultKey": "LOSS",
+          "topicKey": "ONLINE_SHOPPING_SCAM",
+          "riskDelta": {
+            "financial": 30
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Insist on visiting their physical shop or cancel the purchase",
+          "resultKey": "SAFE",
+          "topicKey": "ONLINE_SHOPPING_SCAM",
+          "riskDelta": {
+            "financial": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Unrealistic discounts + Refusal of Pay-on-Delivery",
+        "warningSigns": [
+          "The price is too good to be true for an iPhone 13 Pro Max in Ghana",
+          "Vendor refuses pay-on-delivery and uses a personal MoMo name (Kwame Osei) instead of a registered business name",
+          "Creating artificial urgency ('last piece left') to rush your decision"
+        ],
+        "topicKey": "ONLINE_SHOPPING_SCAM"
+      }
+    },
+    {
+      "id": "police_bail_imposter_011",
+      "category": "IMPOSTER_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 7,
+      "phase": 5,
+      "emotion": ["fear", "panic", "authority"],
+      "isLegit": false,
+      "characters": {
+        "officer": {
+          "name": "CID Officer Mensah",
+          "role": "fake_police",
+          "avatar": "👮"
+        },
+        "relative": {
+          "name": "You",
+          "role": "victim",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "CID Officer Mensah",
+          "text": "Hello, is this Kwame's relative? I am CID Mensah calling from the Tesano Police Station."
+        },
+        {
+          "id": "m2",
+          "sender": "CID Officer Mensah",
+          "text": "Your brother was involved in a serious bar fight at Osu. He broke a bottle on someone's head and the person is bleeding heavily at Ridge Hospital."
+        },
+        {
+          "id": "m3",
+          "sender": "You",
+          "text": "Jesus! Can I speak to him?"
+        },
+        {
+          "id": "m4",
+          "sender": "CID Officer Mensah",
+          "text": "We have locked him in the cells. We are processing him for court tomorrow morning. But if you can send GHS 1,500 via MoMo right now, I will drop the charges and release him to you secretly."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 1,500 immediately to save your brother from going to jail",
+          "resultKey": "LOSS",
+          "topicKey": "IMPOSTER_SCAM",
+          "riskDelta": {
+            "financial": 25,
+            "identity": 5
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Hang up and call your brother's phone directly to verify his location",
+          "resultKey": "SAFE",
+          "topicKey": "IMPOSTER_SCAM",
+          "riskDelta": {
+            "financial": -15,
+            "identity": -5
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fabricated Arrest + Bribe Extortion",
+        "warningSigns": [
+          "Police officers do not call relatives demanding MoMo payments to secretly drop criminal charges",
+          "Scammers use highly emotional, stressful scenarios to hijack your logical thinking",
+          "They isolate you by refusing to let you speak to the supposed arrested relative"
+        ],
+        "topicKey": "IMPOSTER_SCAM"
+      }
+    },
+    {
+      "id": "canada_visa_medical_protocol_012",
+      "category": "ADVANCE_FEE_FRAUD",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 5,
+      "emotion": ["hope", "desperation", "trust"],
+      "isLegit": false,
+      "characters": {
+        "agent": {
+          "name": "Mr. Kobby (Travels)",
+          "role": "fake_agent",
+          "avatar": "✈️"
+        },
+        "applicant": {
+          "name": "You",
+          "role": "client",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mr. Kobby (Travels)",
+          "text": "Good news! The connection at the embassy just texted me. Your Canada work visa is 90% approved."
+        },
+        {
+          "id": "m2",
+          "sender": "Mr. Kobby (Travels)",
+          "text": "They bypassed the VFS biometric queue for you. We just need to submit your medical report to Akai House Clinic."
+        },
+        {
+          "id": "m3",
+          "sender": "Mr. Kobby (Travels)",
+          "text": "The doctor says he will generate a clear report without you even coming in, but his protocol fee is GHS 2,000."
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. Kobby (Travels)",
+          "text": "Send it to me right now so I can sort him out. If we miss this window, the embassy will reject the application."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 2,000 to finalize your Canada visa process",
+          "resultKey": "LOSS",
+          "topicKey": "ADVANCE_FEE_FRAUD",
+          "riskDelta": {
+            "financial": 35,
+            "identity": 10
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Refuse the offer. Medicals for visas must be done in person at approved clinics.",
+          "resultKey": "SAFE",
+          "topicKey": "ADVANCE_FEE_FRAUD",
+          "riskDelta": {
+            "financial": -20,
+            "identity": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Visa Processing Scam + Fake Protocol",
+        "warningSigns": [
+          "It is strictly impossible to bypass VFS biometric queues or get a legitimate immigration medical report without being physically present",
+          "Scammers use the term 'protocol' to make illegal bribes seem like a standard, acceptable practice in Ghana",
+          "Pressure tactics ('miss this window') force you to pay without thinking"
+        ],
+        "topicKey": "ADVANCE_FEE_FRAUD"
+      }
+    },
+    {
+      "id": "telegram_crypto_doubler_013",
+      "category": "INVESTMENT_SCAM",
+      "platform": "TELEGRAM",
+      "difficulty": 4,
+      "phase": 2,
+      "emotion": ["greed", "curiosity", "trust"],
+      "isLegit": false,
+      "characters": {
+        "admin": {
+          "name": "Forex Master Ghana",
+          "role": "scammer",
+          "avatar": "📈"
+        },
+        "investor": {
+          "name": "You",
+          "role": "group_member",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Forex Master Ghana",
+          "text": "Welcome to the VIP Crypto Trading group. We trade directly with the global market to bring you massive profits."
+        },
+        {
+          "id": "m2",
+          "sender": "Forex Master Ghana",
+          "text": "Today's special promo: Invest GHS 500 and receive GHS 5,000 in your MoMo wallet in just 45 minutes. 100% Guaranteed."
+        },
+        {
+          "id": "m3",
+          "sender": "Forex Master Ghana",
+          "text": "[Image: Screenshots of massive MoMo alerts from 'happy customers']"
+        },
+        {
+          "id": "m4",
+          "sender": "Forex Master Ghana",
+          "text": "We are registered with the Bank of Ghana. Send a DM to the admin now to secure your slot. Only 3 slots left!"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Message the admin and invest GHS 500 to get GHS 5,000",
+          "resultKey": "LOSS",
+          "topicKey": "INVESTMENT_SCAM",
+          "riskDelta": {
+            "financial": 20
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Report the group and leave. Bank of Ghana does not endorse 1000% returns in 45 minutes.",
+          "resultKey": "SAFE",
+          "topicKey": "INVESTMENT_SCAM",
+          "riskDelta": {
+            "financial": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Get-Rich-Quick Investment / Money Doubling",
+        "warningSigns": [
+          "Guaranteed returns of 1000% in minutes are mathematically and economically impossible",
+          "Scammers use fake MoMo screenshots ('social proof') to make the scam look legitimate",
+          "Claiming false affiliation with regulators (Bank of Ghana, SEC) to build false trust"
+        ],
+        "topicKey": "INVESTMENT_SCAM"
+      }
+    },
+    {
+      "id": "email_bank_security_alert_legit_014",
+      "category": "BANK_SECURITY",
+      "platform": "EMAIL",
+      "difficulty": 5,
+      "phase": 3,
+      "timeLimit": 25,
+      "penaltyAmount": 1000,
+      "isLegit": true,
+      "emotion": ["concern", "caution", "trust"],
+      "characters": {
+        "bank": {
+          "name": "GCB Bank Security",
+          "role": "official_security_team",
+          "avatar": "🏦"
+        },
+        "customer": {
+          "name": "You",
+          "role": "account_holder",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GCB Bank Security",
+          "text": "Dear Customer, we noticed a login attempt from a new device. For your safety, online banking access has been temporarily limited."
+        },
+        {
+          "id": "m2",
+          "sender": "GCB Bank Security",
+          "text": "Please visit your nearest branch or open your banking app to confirm your identity."
+        },
+        {
+          "id": "m3",
+          "sender": "You",
+          "text": "I received this email from a strange address. How do I know this is real?"
+        },
+        {
+          "id": "m4",
+          "sender": "GCB Bank Security",
+          "text": "Good question. We will never request your PIN, OTP, or password. You can verify this message inside your official mobile banking app."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Open the official banking app and check the security notification",
+          "resultKey": "SAFE",
+          "topicKey": "BANK_SECURITY"
+        },
+        {
+          "id": "c2",
+          "text": "Reply to the email with your account details to confirm ownership",
+          "resultKey": "LOSS",
+          "topicKey": "BANK_SECURITY"
+        }
+      ],
+      "lesson": {
+        "technique": "Legitimate security notification",
+        "warningSigns": [
+          "Real services provide safe verification channels",
+          "Banks never request PINs or OTPs"
+        ],
+        "topicKey": "BANK_SECURITY"
+      }
+    },
+
+
+    {
+      "id": "email_bank_fake_security_team_015",
+      "category": "EMAIL_PHISHING",
+      "platform": "EMAIL",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 20,
+      "penaltyAmount": 3000,
+      "isLegit": false,
+      "emotion": ["fear", "trust", "urgency"],
+      "characters": {
+        "attacker": {
+          "name": "GCB Security Department",
+          "role": "fake_bank_agent",
+          "avatar": "🏦"
+        },
+        "assistant": {
+          "name": "Michael (Fraud Officer)",
+          "role": "fake_supervisor",
+          "avatar": "👔"
+        },
+        "victim": {
+          "name": "You",
+          "role": "customer",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GCB Security Department",
+          "text": "URGENT: Suspicious activity detected on your account. A withdrawal attempt of GHS 3,000 was blocked."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "This email address does not look official. Is this really GCB?"
+        },
+        {
+          "id": "m3",
+          "sender": "Michael (Fraud Officer)",
+          "text": "You are right to be careful. Many fake emails exist. I am the senior officer assigned to verify this case."
+        },
+        {
+          "id": "m4",
+          "sender": "Michael (Fraud Officer)",
+          "text": "We will never ask for your PIN. We only need the 6-digit verification code sent to your phone to cancel the suspicious transaction."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the verification code because they said they do not need your PIN",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Close the email and contact the bank using the number on your card",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Reverse trust building",
+        "warningSigns": [
+          "Scammers may admit fake messages exist to appear genuine",
+          "OTP is still a secret even without sharing your PIN"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+
+
+    {
+      "id": "gra_tax_confirmation_legit_016",
+      "category": "GOVERNMENT_SERVICE",
+      "platform": "EMAIL",
+      "difficulty": 4,
+      "phase": 3,
+      "timeLimit": 30,
+      "penaltyAmount": 0,
+      "isLegit": true,
+      "emotion": ["routine", "responsibility"],
+      "characters": {
+        "gra": {
+          "name": "GRA Taxpayer Portal",
+          "role": "official_service",
+          "avatar": "⚖️"
+        },
+        "taxpayer": {
+          "name": "You",
+          "role": "business_owner",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GRA Taxpayer Portal",
+          "text": "Your VAT filing period has opened. You can complete your return through your registered taxpayer portal."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Can I complete this through WhatsApp instead?"
+        },
+        {
+          "id": "m3",
+          "sender": "GRA Taxpayer Portal",
+          "text": "No. Do not share your TIN password or account details with anyone claiming to assist you."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Log into the official taxpayer portal yourself",
+          "resultKey": "SAFE",
+          "topicKey": "GOVERNMENT_SERVICE"
+        },
+        {
+          "id": "c2",
+          "text": "Send my login details to someone offering to file it faster",
+          "resultKey": "LOSS",
+          "topicKey": "ACCOUNT_TAKEOVER"
+        }
+      ],
+      "lesson": {
+        "technique": "Safe government interaction",
+        "warningSigns": [
+          "Official services do not need personal passwords",
+          "Avoid unofficial helpers requesting access"
+        ],
+        "topicKey": "GOVERNMENT_SERVICE"
+      }
+    },
+    {
+      "id": "momo_security_verification_017",
+      "category": "MOBILE_MONEY",
+      "platform": "PHONE_CALL",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 20,
+      "penaltyAmount": 2000,
+      "isLegit": false,
+      "emotion": ["fear", "trust", "urgency"],
+      "characters": {
+        "caller": {
+          "name": "MTN Security Desk",
+          "role": "fake_agent"
+        },
+        "helper": {
+          "name": "Michael",
+          "role": "fake_supervisor"
+        },
+        "victim": {
+          "name": "You",
+          "role": "momo_user"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MTN Security Desk",
+          "text": "Hello, we detected suspicious activity on your MoMo wallet from another device."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Which number are you calling from? This does not look like MTN customer care."
+        },
+        {
+          "id": "m3",
+          "sender": "MTN Security Desk",
+          "text": "I understand your concern. This is our temporary fraud response line. For your safety, I will connect you to my supervisor."
+        },
+        {
+          "id": "m4",
+          "sender": "Michael",
+          "text": "Good afternoon. I am verifying the case. We will never ask for your PIN. We only need the security code sent to your phone to freeze the hacker's session."
+        },
+        {
+          "id": "m5",
+          "sender": "Michael",
+          "text": "The code is not a PIN. It is only confirmation that you own this wallet."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the security code because they said it is not the PIN",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "End the call and contact MTN through the official customer channel",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake support escalation",
+        "warningSigns": [
+          "Scammers create fake supervisors to appear legitimate",
+          "OTP codes should never be shared",
+          "Official support channels should be contacted independently"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+
+    {
+      "id": "bank_card_upgrade_legit_018",
+      "category": "BANK_SECURITY",
+      "platform": "SMS",
+      "difficulty": 3,
+      "phase": 2,
+      "timeLimit": 30,
+      "penaltyAmount": 0,
+      "isLegit": true,
+      "emotion": ["curiosity", "security"],
+      "characters": {
+        "bank": {
+          "name": "Your Bank",
+          "role": "official_notification"
+        },
+        "customer": {
+          "name": "You",
+          "role": "account_holder"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Your Bank",
+          "text": "Dear customer, your debit card will expire next month."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "I received this message but I am not sure if this number is official."
+        },
+        {
+          "id": "m3",
+          "sender": "Your Bank",
+          "text": "For your security, do not reply with your password, PIN, or OTP. Visit any branch or use the banking app to request replacement."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Open the banking app and request the replacement card",
+          "resultKey": "SAFE",
+          "topicKey": "BANK_SECURITY"
+        },
+        {
+          "id": "c2",
+          "text": "Reply with your account details so they can verify you",
+          "resultKey": "LOSS",
+          "topicKey": "BANK_SECURITY"
+        }
+      ],
+      "lesson": {
+        "technique": "Legitimate security notification",
+        "warningSigns": [
+          "Real services do not request passwords or PINs",
+          "Use official apps instead of message links"
+        ],
+        "topicKey": "BANK_SECURITY"
+      }
+    },
+
+    {
+      "id": "fake_ecg_disconnection_019",
+      "category": "UTILITY_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 600,
+      "isLegit": false,
+      "emotion": ["fear", "urgency"],
+      "characters": {
+        "agent": {
+          "name": "ECG Billing Department",
+          "role": "fake_agent"
+        },
+        "supervisor": {
+          "name": "Mr. Boateng",
+          "role": "fake_manager"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "ECG Billing Department",
+          "text": "Your meter has an unpaid emergency balance. Power will be disconnected within one hour."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Why are you calling from a personal number?"
+        },
+        {
+          "id": "m3",
+          "sender": "ECG Billing Department",
+          "text": "This is an internal recovery line. Many customers miss official calls because they block short codes."
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. Boateng",
+          "text": "I am the supervisor. We only need your meter number and payment confirmation so we can stop the disconnection."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the payment confirmation screenshot to stop the disconnection",
+          "resultKey": "LOSS",
+          "topicKey": "UTILITY_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Check your bill through the official ECG channel first",
+          "resultKey": "SAFE",
+          "topicKey": "UTILITY_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake service recovery",
+        "warningSigns": [
+          "Personal numbers claiming to be official departments are suspicious",
+          "Verify bills independently"
+        ],
+        "topicKey": "UTILITY_SCAM"
+      }
+    },
+
+    {
+      "id": "whatsapp_security_alert_020",
+      "category": "ACCOUNT_TAKEOVER",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 20,
+      "penaltyAmount": 1000,
+      "isLegit": false,
+      "emotion": ["fear", "trust"],
+      "characters": {
+        "friend": {
+          "name": "Kojo",
+          "role": "hacked_friend"
+        },
+        "support": {
+          "name": "WhatsApp Support",
+          "role": "fake_support"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Kojo",
+          "text": "Bro, I accidentally sent a WhatsApp verification code to your phone. Send it back quickly."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Why would WhatsApp send me your code?"
+        },
+        {
+          "id": "m3",
+          "sender": "Kojo",
+          "text": "My account is being recovered. WhatsApp support said you can help confirm ownership."
+        },
+        {
+          "id": "m4",
+          "sender": "WhatsApp Support",
+          "text": "Hello. We detected unusual activity. Forwarding this code will complete identity verification."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Forward the WhatsApp code to help Kojo recover his account",
+          "resultKey": "LOSS",
+          "topicKey": "ACCOUNT_TAKEOVER"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the request and contact Kojo through another method",
+          "resultKey": "SAFE",
+          "topicKey": "ACCOUNT_TAKEOVER"
+        }
+      ],
+      "lesson": {
+        "technique": "Friend impersonation",
+        "warningSigns": [
+          "Verification codes belong only to the account owner",
+          "Fake support accounts are common"
+        ],
+        "topicKey": "ACCOUNT_TAKEOVER"
+      }
+    }
+  ]
+}

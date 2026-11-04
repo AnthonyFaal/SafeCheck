@@ -1,0 +1,1663 @@
+{
+  "templates": [
+    {
+      "id": "momo_wrong_transfer_panic_001",
+      "category": "MOMO_ACCOUNT_TAKEOVER",
+      "platform": "SMS",
+      "difficulty": 2,
+      "phase": 1,
+      "timeLimit": 20,
+      "penaltyAmount": 2000,
+      "emotion": ["panic", "empathy", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "momo_user", "avatar": "👤" },
+        "attacker": { "name": "024XXXXXXX", "role": "frantic_sender", "avatar": "📞" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "024XXXXXXX",
+          "text": "Payment received for GHS 2,000.00 from KWAME MENSAH. Current Balance: GHS 2,450.50. Ref: Hospital Bill.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "024XXXXXXX",
+          "text": "Charley please I beg you in the name of God! I sent 2000 cedis to your number by mistake right now.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "024XXXXXXX",
+          "text": "It is my mother's surgery money at Korle-Bu. Please check your balance and send it back. I am crying right now.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "024XXXXXXX",
+          "text": "Massa are you there?? The doctor is waiting for the money! Please!",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 2,000 back immediately out of pity.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Check my actual MoMo balance by dialing *170# first.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake SMS Alert + Emotional Manipulation",
+        "warningSigns": [
+          "The initial 'Payment received' message came from a regular number (024...), not 'MobileMoney'.",
+          "Scammers use extreme emotional pressure (hospital bills, school fees) to stop you from thinking.",
+          "They rush you so you don't check your actual balance."
+        ]
+      }
+    },
+    {
+      "id": "ecg_disconnection_threat_002",
+      "category": "UTILITY_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 4,
+      "phase": 2,
+      "timeLimit": 15,
+      "penaltyAmount": 500,
+      "emotion": ["fear", "authority", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "homeowner", "avatar": "👤" },
+        "attacker": { "name": "ECG Taskforce", "role": "fake_official", "avatar": "⚡" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "ECG Taskforce",
+          "text": "URGENT NOTICE: Your prepaid meter has been flagged for illegal connection bypass.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "ECG Taskforce",
+          "text": "Our taskforce is currently in your area. Your meter will be disconnected and confiscated in exactly 30 minutes.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "ECG Taskforce",
+          "text": "To halt the disconnection, pay the instant penalty fee of GHS 500 to the Regional Manager's proxy account: 055XXXXXXX.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "ECG Taskforce",
+          "text": "Taskforce is 2 streets away. Have you made the payment?",
+          "delay": 5000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the GHS 500 to avoid sleeping in darkness.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the message and contact ECG via their official app/USSD.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Authority Impersonation + High Time Pressure",
+        "warningSigns": [
+          "ECG does not use WhatsApp to send disconnection notices.",
+          "Official utility companies do not ask for payments to 'proxy accounts' or personal MoMo numbers.",
+          "The '30-minute' deadline is a psychological trap."
+        ]
+      }
+    },
+    {
+      "id": "hostel_accommodation_rush_003",
+      "category": "ADVANCE_FEE_FRAUD",
+      "platform": "TELEGRAM",
+      "difficulty": 6,
+      "phase": 3,
+      "timeLimit": 25,
+      "penaltyAmount": 1500,
+      "emotion": ["desperation", "opportunity", "greed"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "student", "avatar": "👤" },
+        "attacker": { "name": "Kofi Evandy", "role": "fake_student", "avatar": "🎓" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Kofi Evandy",
+          "text": "Boss, I saw your post looking for a room. I have a 2-in-a-room at Evandy Hostel. I'm deferring my course so I'm subletting it.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Kofi Evandy",
+          "text": "Normally it's GHS 3,500, but if you can take it today I'll give it to you for GHS 2,000.",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Kofi Evandy",
+          "text": "Another guy from Level 300 is coming to pay right now, but you messaged first. Send half (GHS 1000) so I lock it for you, then we meet at the porter's lodge for the key.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Kofi Evandy",
+          "text": "Bro the other guy is calling me. Are you sending the MoMo or I should give it to him?",
+          "delay": 6000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 1,000 to secure the cheap room before the other guy takes it.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Tell him you will only pay when you meet face-to-face at the hostel.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Scarcity Principle + Fear of Missing Out (FOMO)",
+        "warningSigns": [
+          "The price is suspiciously lower than the market rate.",
+          "The 'other buyer is waiting' tactic is a classic way to force an advance payment.",
+          "Never pay for accommodation without physical inspection and verifying with hostel management."
+        ]
+      }
+    },
+    {
+      "id": "protocol_recruitment_004",
+      "category": "JOB_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 30,
+      "penaltyAmount": 800,
+      "emotion": ["excitement", "trust", "secrecy"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "job_seeker", "avatar": "👤" },
+        "attacker": { "name": "Uncle Yaw (Customs)", "role": "fake_insider", "avatar": "👮" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Uncle Yaw (Customs)",
+          "text": "Hello my son. Your mother told me you finished National Service. I have two 'protocol' slots for Ghana Immigration Service.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Uncle Yaw (Customs)",
+          "text": "The Commander is a good friend. No need for aptitude test. We are compiling the list for medicals tonight.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Uncle Yaw (Customs)",
+          "text": "Just send your full name, shoe size, and GHS 800 for the medical processing forms. Send it to the HR's MoMo number: 024XXXXXXX.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Uncle Yaw (Customs)",
+          "text": "Keep this strictly confidential. Don't tell anyone. Let me know when the money drops so I put your name on the master list.",
+          "delay": 4500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 800 immediately to secure the protocol job.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Call your mother to confirm if she actually spoke to any 'Uncle Yaw'.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Familiarity Fraud + Bribery/Protocol Lure",
+        "warningSigns": [
+          "Scammers use the allure of 'protocol' (nepotism) because victims feel they are getting an exclusive, secret advantage.",
+          "Legitimate government agencies do not collect medical fees via personal MoMo accounts.",
+          "The instruction to 'keep it confidential' is to prevent the victim from asking a friend who might spot the scam."
+        ]
+      }
+    },
+    {
+      "id": "marketplace_uber_dispatch_005",
+      "category": "MARKETPLACE_ADVANCE_PAYMENT",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 4500,
+      "emotion": ["trust", "relief", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "seller", "avatar": "👤" },
+        "attacker": { "name": "Dr. Appiah", "role": "fake_buyer", "avatar": "👨‍⚕️" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Dr. Appiah",
+          "text": "Good day. I want to buy the iPhone 13 Pro Max you posted on Jiji. GHS 4,500 is fine.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Dr. Appiah",
+          "text": "I am on shift at Ridge Hospital so I can't come myself. I will send the money through Fidelity Bank right now, then send an Uber to pick the phone.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Dr. Appiah",
+          "text": "FIDELITY BANK ALERT: GHS 4,500.00 has been credited to your account from DR. APPIAH. Ref: iPhone.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Dr. Appiah",
+          "text": "Have you received the alert? The Uber driver is outside your gate. Please hand over the phone to him, my break is almost over.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Give the phone to the Uber driver since the text alert proves he paid.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Check your actual bank app to confirm the funds have cleared before handing over the phone.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake Payment Alert + Third-Party Courier",
+        "warningSigns": [
+          "The bank alert was sent as a regular WhatsApp text or standard SMS, not generated from your actual banking app.",
+          "The 'Uber driver' is often the scammer themselves or an accomplice.",
+          "They rely on your excitement of a quick sale to skip verifying your actual account balance."
+        ]
+      }
+    },
+    {
+      "id": "church_welfare_spoof_006",
+      "category": "AUTHORITY_IMPERSONATION",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 20,
+      "penaltyAmount": 1000,
+      "emotion": ["trust", "obligation", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "church_member", "avatar": "👤" },
+        "attacker": { "name": "Osofo (Head Pastor)", "role": "hacked_account", "avatar": "⛪" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Osofo (Head Pastor)",
+          "text": "Peace be unto you. Please I am in a strict board meeting and cannot take calls.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Osofo (Head Pastor)",
+          "text": "Brother Mark from the choir has been involved in a serious accident on the N1. They need an emergency deposit for blood transfusion at 37 Military Hospital.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Osofo (Head Pastor)",
+          "text": "The church account mandate requires two signatories so I can't withdraw now. Send GHS 1,000 to the doctor in charge: 025XXXXXXX. I will refund you right after service.",
+          "delay": 4500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Osofo (Head Pastor)",
+          "text": "God bless your prompt response. They are waiting at the theater.",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the money to the doctor's number to save a life.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Call another church elder or brother Mark directly to verify the story.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Account Takeover + Authority/Affinity Fraud",
+        "warningSigns": [
+          "Scammers frequently hijack WhatsApp accounts of Pastors or community leaders to exploit the trust and obedience of their followers.",
+          "The 'I am in a meeting and can't talk' excuse is designed to prevent you from calling to verify the voice.",
+          "Medical emergencies are a common tactic to trigger panic and bypass logical thinking."
+        ]
+      }
+    },
+    {
+      "id": "tema_port_customs_007",
+      "category": "ADVANCE_FEE_FRAUD",
+      "platform": "WHATSAPP",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 25,
+      "penaltyAmount": 3500,
+      "emotion": ["fear", "greed", "confusion"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "recipient", "avatar": "👤" },
+        "attacker": { "name": "GRA Customs - Officer Mensah", "role": "fake_officer", "avatar": "🛃" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GRA Customs - Officer Mensah",
+          "text": "Good afternoon. Are you the receiver of a diplomatic package containing Apple electronics and cash from the UK? Tracking Number: GB-99482.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "GRA Customs - Officer Mensah",
+          "text": "The package has been intercepted at Tema Port. Undeclared foreign currency is a federal offense under the Anti-Money Laundering Act.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "GRA Customs - Officer Mensah",
+          "text": "We are preparing a warrant for your arrest. However, you can pay a clearance penalty fee of GHS 3,500 immediately to have the items released and the charges dropped.",
+          "delay": 4500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "GRA Customs - Officer Mensah",
+          "text": "You have 10 minutes before the manifest is submitted to the police. Awaiting your MoMo payment on the designated GRA proxy line.",
+          "delay": 5000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the GHS 3,500 penalty to avoid arrest and get the electronics.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Tell them to go ahead and arrest you because you aren't expecting any package.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Intimidation + Romance/Gift Scam Continuation",
+        "warningSigns": [
+          "This usually follows a romance scam where a 'foreigner' promises to send you gifts.",
+          "Ghana Revenue Authority (GRA) does not operate 'proxy MoMo lines'. All duties are paid through the official Ghana.gov portal.",
+          "Legitimate law enforcement will not offer to drop money laundering charges for a quick Mobile Money bribe."
+        ]
+      }
+    },
+    {
+      "id": "boss_urgent_spearphishing_008",
+      "category": "CEO_FRAUD",
+      "platform": "WHATSAPP",
+      "difficulty": 9,
+      "phase": 6,
+      "timeLimit": 15,
+      "penaltyAmount": 2500,
+      "emotion": ["obedience", "panic", "professionalism"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "employee", "avatar": "👤" },
+        "attacker": { "name": "CEO/Manager", "role": "spoofed_number", "avatar": "👔" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "CEO/Manager",
+          "text": "Are you at your desk? I need a quick favor.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "CEO/Manager",
+          "text": "I am in a presentation with the Ministry right now. My MoMo app is failing and I need to settle a supplier immediately to secure the contract.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "CEO/Manager",
+          "text": "Send GHS 2,500 to the supplier's number: 054XXXXXXX. Send me the screenshot. I will reimburse your account from petty cash the moment this meeting ends.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "CEO/Manager",
+          "text": "Have you sent it? The Minister is waiting.",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the money quickly to impress the boss and save the company contract.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Check the number to see if it matches your boss's actual contact, or call them.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Spear-Phishing + Professional Pressure",
+        "warningSigns": [
+          "Scammers pull the names and photos of executives from LinkedIn and create spoofed WhatsApp accounts.",
+          "They prey on the hierarchy of Ghanaian workplaces where subordinates are afraid to question their bosses.",
+          "Always verify unusual financial requests from executives through a secondary channel (like a phone call or company Slack/Teams)."
+        ]
+      }
+    },
+    {
+      "id": "bank_ghanacard_linkage_009",
+      "category": "BANKING_VISHING",
+      "platform": "SMS",
+      "difficulty": 10,
+      "phase": 6,
+      "timeLimit": 30,
+      "penaltyAmount": 5000,
+      "emotion": ["fear", "compliance", "confusion"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "bank_customer", "avatar": "👤" },
+        "attacker": { "name": "BANK ALERT", "role": "spoofed_sms", "avatar": "🏦" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "BANK ALERT",
+          "text": "Dear Customer, your account has been temporarily RESTRICTED due to a failed GhanaCard linkage. Dial *713*9# to verify or call support on 024XXXXXXX.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Bank Support (Call Simulation)",
+          "text": "Hello, am I speaking with [Your Name]? I am calling from the fraud department. Your account linkage failed during our system upgrade.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Bank Support (Call Simulation)",
+          "text": "To prevent a total freeze of your funds by the Bank of Ghana, we will send an OTP to verify your identity. We do not need your PIN, just the system OTP.",
+          "delay": 5000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "BANK ALERT",
+          "text": "Your verification code is 849201. Do not share your PIN.",
+          "delay": 2000,
+          "isDistraction": true
+        },
+        {
+          "id": "m5",
+          "sender": "Bank Support (Call Simulation)",
+          "text": "Please confirm the 6-digit verification code you just received so I can unblock the account.",
+          "delay": 2000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the OTP to the agent to avoid your bank account being frozen.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Hang up and visit your nearest bank branch physically.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Spoofed SMS + Vishing (Voice Phishing)",
+        "warningSigns": [
+          "Scammers use spoofing technology to make their texts appear in the same thread as your actual bank alerts.",
+          "They exploit real-world events (like the mandatory GhanaCard linkage directive) to sound credible.",
+          "The OTP they are asking for is actually the code to authorize a transfer or reset your password. Banks will NEVER ask you to read an OTP over the phone."
+        ]
+      }
+    },
+    {
+      "id": "police_bail_checkpoint_010",
+      "category": "EMERGENCY_IMPERSONATION",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 20,
+      "penaltyAmount": 1500,
+      "emotion": ["panic", "desperation", "fear"],
+      "isLegit": false,
+      "characters": {
+        "victim": { "name": "You", "role": "sibling/friend", "avatar": "👤" },
+        "attacker": { "name": "Police Officer (Inspector)", "role": "fake_police", "avatar": "🚔" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Police Officer (Inspector)",
+          "text": "Hello, this is Inspector Osei from the East Legon Police Command. We have your brother in custody at a checkpoint.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Police Officer (Inspector)",
+          "text": "We found suspected contraband in his Uber. He gave us your number to call. We are about to process him to the cells for Monday court.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Police Officer (Inspector)",
+          "text": "He is begging us to settle the matter here. If you can send GHS 1,500 'water money' right now, I will let him go. Otherwise, the media will get hold of this.",
+          "delay": 5000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Police Officer (Inspector)",
+          "text": "The Commander is coming out. You have 2 minutes. Are you sending it or I should lock him up?",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 1,500 bribe to save your brother from being jailed.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Ask to speak to your brother on the phone to confirm it's actually him.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Virtual Kidnapping/Bail Scam",
+        "warningSigns": [
+          "Scammers use the fear of the Ghanaian justice system and police brutality to extort victims.",
+          "They refuse to let you speak to the supposedly arrested person.",
+          "Legitimate police bail is completely free and requires you to physically sign documents at the station, not send Mobile Money to a checkpoint."
+        ]
+      }
+    },
+    {
+      "id": "ponzi_crypto_wealth_circle_001",
+      "category": "PONZI_SCHEME",
+      "platform": "TELEGRAM",
+      "difficulty": 6,
+      "phase": 3,
+      "timeLimit": 30,
+      "penaltyAmount": 5000,
+      "emotion": ["greed", "trust", "social_proof"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "investor",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Crypto Kings Africa",
+          "role": "investment_admin",
+          "avatar": "💰"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Crypto Kings Africa",
+          "text": "Welcome to our private investment circle. We use AI crypto trading systems to generate 15% guaranteed returns every week.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Member123",
+          "text": "I invested GHS 500 last week and withdrew GHS 575 today. This thing is real 🔥",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Crypto Kings Africa",
+          "text": "Early members get Diamond VIP status. Minimum investment increases tomorrow because many people are joining.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Crypto Kings Africa",
+          "text": "Your dashboard shows GHS 3,200 profit. Upgrade your account with GHS 2,000 to unlock withdrawals.",
+          "delay": 5000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the upgrade fee because the dashboard shows my profits.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Research the company, regulation, and how profits are generated.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Classic Ponzi Structure + Fake Trading Dashboard",
+        "warningSigns": [
+          "Guaranteed fixed returns are unrealistic.",
+          "Early investors are often paid using money from newer investors.",
+          "A dashboard showing profits does not prove real investment activity."
+        ]
+      }
+    },
+
+    {
+      "id": "ponzi_momo_investment_club_002",
+      "category": "PONZI_SCHEME",
+      "platform": "WHATSAPP",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 3000,
+      "emotion": ["community_pressure", "trust", "excitement"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "group_member",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "SmartCash Family",
+          "role": "group_admin",
+          "avatar": "📈"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "SmartCash Family",
+          "text": "Good news family! Our daily investment cycle starts today. Put GHS 1,000 and receive GHS 1,500 after 14 days.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Ama",
+          "text": "I received mine yesterday. Thank you SmartCash 🙏",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Admin",
+          "text": "We are closing registration tonight. Only serious investors remain.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Admin",
+          "text": "Invite 5 friends and unlock Platinum level with higher returns.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Invest because people in the group are receiving payments.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Ask where the investment profit actually comes from.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Referral Pyramid + Social Proof",
+        "warningSigns": [
+          "Recruiting new members becomes more important than selling a real product.",
+          "Fake testimonials create confidence.",
+          "Payments to early members can be used to attract bigger deposits."
+        ]
+      }
+    },
+
+    {
+      "id": "ponzi_forex_masterclass_003",
+      "category": "INVESTMENT_SCAM",
+      "platform": "INSTAGRAM",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 30,
+      "penaltyAmount": 10000,
+      "emotion": ["aspiration", "envy", "greed"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "young_professional",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "FX Mentor Ghana",
+          "role": "fake_trader",
+          "avatar": "📊"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "FX Mentor Ghana",
+          "text": "I turned GHS 2,000 into GHS 20,000 using my private forex strategy.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "FX Mentor Ghana",
+          "text": "My students don't trade themselves. They copy my signals and earn automatically.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "FX Mentor Ghana",
+          "text": "Join my VIP investment account. Minimum deposit GHS 5,000. Withdraw anytime.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "FX Mentor Ghana",
+          "text": "Your account has grown to GHS 8,700. Pay 10% withdrawal tax before receiving your money.",
+          "delay": 5000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the withdrawal tax to access my profits.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Verify whether the trading activity and company are legitimate.",
+          "resultKey": "SAFE"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake Trading + Withdrawal Fee Trap",
+        "warningSigns": [
+          "Fake traders show rented lifestyles and fake screenshots.",
+          "Real investments do not require random fees to release your own money.",
+          "Profits displayed online can be completely fabricated."
+        ]
+      }
+    },
+    {
+      "id": "momo_wrong_transfer_callback_chain_001",
+      "category": "MOMO_ACCOUNT_TAKEOVER",
+      "platform": "PHONE_CALL",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 45,
+      "penaltyAmount": 5000,
+      "emotion": [
+        "empathy",
+        "confusion",
+        "authority",
+        "panic"
+      ],
+      "isLegit": false,
+
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "momo_user",
+          "avatar": "👤"
+        },
+        "attacker1": {
+          "name": "Kwesi Boateng",
+          "role": "fake_sender",
+          "avatar": "📞"
+        },
+        "attacker2": {
+          "name": "Ama Serwaa (MTN Support)",
+          "role": "fake_telecom_agent",
+          "avatar": "🟡"
+        }
+      },
+
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Kwesi Boateng",
+          "type": "CALL",
+          "text": "Hello boss, please check your phone. I mistakenly sent GHS 3,000 to your MoMo number instead of my brother's number.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Kwesi Boateng",
+          "type": "SMS",
+          "text": "MTN MoMo: You have received GHS 3,000.00 from KWESI BOATENG. Ref: Hospital Payment.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Kwesi Boateng",
+          "type": "CALL",
+          "text": "Boss please help me reverse it. Dial *170# and enter your MoMo PIN so the reversal can complete.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "System Notification",
+          "type": "PHONE_POPUP",
+          "text": "Enter MoMo PIN to confirm transaction reversal.",
+          "delay": 2000,
+          "isDistraction": true
+        },
+        {
+          "id": "m5",
+          "sender": "Ama Serwaa (MTN Support)",
+          "type": "CALL",
+          "text": "Good afternoon. My name is Ama from MTN MoMo fraud department. We noticed someone attempted to access your account.",
+          "delay": 7000,
+          "isDistraction": false
+        },
+        {
+          "id": "m6",
+          "sender": "Ama Serwaa (MTN Support)",
+          "type": "CALL",
+          "text": "The person's account has been blocked. To protect your account and trace the fraud, kindly confirm your MoMo PIN.",
+          "delay": 5000,
+          "isDistraction": false
+        }
+      ],
+
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Provide my MoMo PIN because MTN is protecting my account.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "End the call and contact MTN using the official customer care number.",
+          "resultKey": "SAFE"
+        }
+      ],
+
+      "lesson": {
+        "technique": "MoMo Reversal Scam + Telecom Impersonation",
+        "warningSigns": [
+          "MoMo reversals do not require customers to enter their PIN.",
+          "MTN, Telecel, and financial institutions will never ask for your MoMo PIN.",
+          "The second caller creates fake authority to recover from the first failed attempt.",
+          "A real accidental transfer can be verified through your MoMo balance."
+        ]
+      }
+    },
+
+
+    {
+      "id": "momo_fake_customer_service_upgrade_002",
+      "category": "SIM_SWAP",
+      "platform": "PHONE_CALL",
+      "difficulty": 10,
+      "phase": 6,
+      "timeLimit": 40,
+      "penaltyAmount": 10000,
+      "emotion": [
+        "fear",
+        "compliance",
+        "technical_confusion"
+      ],
+
+      "isLegit": false,
+
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "mobile_money_customer",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Daniel Asare",
+          "role": "fake_network_engineer",
+          "avatar": "🧑🏾‍💻"
+        }
+      },
+
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Daniel Asare",
+          "type": "CALL",
+          "text": "Hello, I am Daniel from Telecel technical support. We are upgrading our MoMo security system.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Daniel Asare",
+          "type": "CALL",
+          "text": "Your SIM has not completed the new security registration. Your MoMo services may stop working today.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Daniel Asare",
+          "type": "CALL",
+          "text": "I will send a verification code. Read it back so I confirm you own the number.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "System",
+          "type": "SMS",
+          "text": "Your MoMo verification code is 482991. Do not share this code.",
+          "delay": 2000,
+          "isDistraction": true
+        }
+      ],
+
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the verification code to complete the upgrade.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Refuse and visit an official service centre.",
+          "resultKey": "SAFE"
+        }
+      ],
+
+      "lesson": {
+        "technique": "SIM Swap Preparation + OTP Theft",
+        "warningSigns": [
+          "Network providers do not request security codes over calls.",
+          "OTP messages explicitly warn users not to share codes.",
+          "Attackers use fake technical language to appear legitimate."
+        ]
+      }
+    },
+
+
+    {
+      "id": "momo_fake_refund_scam_003",
+      "category": "MOMO_FRAUD",
+      "platform": "WHATSAPP",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 2500,
+
+      "emotion": [
+        "excitement",
+        "greed",
+        "trust"
+      ],
+
+      "isLegit": false,
+
+      "characters": {
+        "attacker": {
+          "name": "Nana Yaw",
+          "role": "fake_company_agent",
+          "avatar": "💼"
+        }
+      },
+
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Nana Yaw",
+          "text": "Hello. You bought an item from our store last month. We discovered you were overcharged.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Nana Yaw",
+          "text": "We are refunding GHS 750. Check your phone for confirmation.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Nana Yaw",
+          "text": "A confirmation popup will appear. Enter your PIN to receive the refund.",
+          "delay": 4000,
+          "isDistraction": false
+        }
+      ],
+
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Enter my PIN to receive the refund.",
+          "resultKey": "LOSS"
+        },
+        {
+          "id": "c2",
+          "text": "Check my account directly and never enter my PIN for receiving money.",
+          "resultKey": "SAFE"
+        }
+      ],
+
+      "lesson": {
+        "technique": "Fake Refund + PIN Harvesting",
+        "warningSigns": [
+          "Receiving money never requires your PIN.",
+          "PINs authorize outgoing transactions, not incoming money.",
+          "Refund claims should be verified through official company channels."
+        ]
+      }
+    },
+    {
+  "id": "bank_transaction_investigation_011",
+  "category": "BANKING_IMPERSONATION",
+  "platform": "PHONE_CALL",
+  "difficulty": 8,
+  "phase": 5,
+  "timeLimit": 30,
+  "penaltyAmount": 7000,
+  "emotion": ["fear", "cooperation", "authority"],
+  "isLegit": false,
+  "characters": {
+    "victim": {
+      "name": "You",
+      "role": "bank_customer",
+      "avatar": "👤"
+    },
+    "attacker": {
+      "name": "Michael Mensah",
+      "role": "fake_fraud_officer",
+      "avatar": "🏦"
+    }
+  },
+  "conversation": [
+    {
+      "id": "m1",
+      "sender": "Michael Mensah",
+      "text": "Good afternoon. I am calling from the bank fraud monitoring team. We detected unusual activity on your account."
+    },
+    {
+      "id": "m2",
+      "sender": "Michael Mensah",
+      "text": "A transfer of GHS 7,000 was attempted from a new device in another region."
+    },
+    {
+      "id": "m3",
+      "sender": "Michael Mensah",
+      "text": "To cancel it, I need to confirm some security details. I already know your name and account number."
+    },
+    {
+      "id": "m4",
+      "sender": "Michael Mensah",
+      "text": "I have sent a confirmation request. Approve it so we can block the suspicious transaction."
+    }
+  ],
+  "choices": [
+    {
+      "id": "c1",
+      "text": "Approve the request because they are helping stop the fraudulent transfer.",
+      "resultKey": "LOSS"
+    },
+    {
+      "id": "c2",
+      "text": "End the call and contact the bank using the official number.",
+      "resultKey": "SAFE"
+    }
+  ],
+  "lesson": {
+    "technique": "Fake fraud department + approval theft",
+    "warningSigns": [
+      "Attackers can know basic account information from leaks.",
+      "Fraud teams do not ask customers to approve unknown requests."
+    ]
+  }
+},
+
+{
+"id":"ai_voice_family_emergency_012",
+"category":"VOICE_CLONING_SCAM",
+"platform":"PHONE_CALL",
+"difficulty":10,
+"phase":6,
+"timeLimit":30,
+"penaltyAmount":5000,
+"emotion":["panic","love","fear"],
+"isLegit":false,
+"characters":{
+"victim":{"name":"You","role":"family_member","avatar":"👤"},
+"attacker":{"name":"Unknown Voice","role":"ai_voice_clone","avatar":"📞"}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Unknown Voice",
+"text":"Mum, it is me. My phone microphone is damaged. I am calling from someone else's phone."
+},
+{
+"id":"m2",
+"sender":"Unknown Voice",
+"text":"I had an accident but I am okay. I need money urgently for transport and medical checks."
+},
+{
+"id":"m3",
+"sender":"Unknown Voice",
+"text":"Please don't call my normal number. The phone is with the police."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Send the money because the voice sounds exactly like my child.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Ask a question only my family member would know and verify another way.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"AI voice cloning + emotional pressure",
+"warningSigns":[
+"Voice similarity is no longer proof of identity.",
+"Scammers create urgency to prevent verification."
+]
+}
+},    
+    {
+"id":"fake_landlord_deposit_013",
+"category":"RENTAL_SCAM",
+"platform":"FACEBOOK",
+"difficulty":7,
+"phase":4,
+"timeLimit":25,
+"penaltyAmount":4000,
+"emotion":["relief","urgency","trust"],
+"isLegit":false,
+"conversation":[
+{
+"id":"m1",
+"sender":"Landlord",
+"text":"The apartment is still available. Many people have contacted me today."
+},
+{
+"id":"m2",
+"sender":"Landlord",
+"text":"I am currently outside Accra, but my caretaker can show you the place after payment."
+},
+{
+"id":"m3",
+"sender":"Landlord",
+"text":"Send GHS 2,000 deposit now and I will remove the listing."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Send the deposit because the landlord provided pictures and an address.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Arrange viewing and verify ownership before paying.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Fake property + advance payment",
+"warningSigns":[
+"Photos and addresses can be copied.",
+"Pressure to pay before viewing is a common trap."
+]
+}
+},
+{
+"id":"company_password_reset_014",
+"category":"CORPORATE_PHISHING",
+"platform":"EMAIL",
+"difficulty":9,
+"phase":6,
+"timeLimit":20,
+"penaltyAmount":8000,
+"emotion":["professionalism","fear"],
+"isLegit":false,
+"conversation":[
+{
+"id":"m1",
+"sender":"IT Security",
+"text":"Your company password expires today due to security policy."
+},
+{
+"id":"m2",
+"sender":"IT Security",
+"text":"Failure to update will lock your account and affect payroll access."
+},
+{
+"id":"m3",
+"sender":"IT Security",
+"text":"Complete verification using this employee portal."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Use the portal because IT normally handles password updates.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Open the company IT portal manually instead of using the email link.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Corporate credential phishing",
+"warningSigns":[
+"Attackers imitate normal workplace procedures.",
+"Urgency around accounts creates rushed decisions."
+]
+}
+},
+{
+  "id": "fake_ghana_post_delivery_verification_015",
+  "category": "DELIVERY_IDENTITY_THEFT",
+  "platform": "SMS",
+  "difficulty": 8,
+  "phase": 5,
+  "timeLimit": 30,
+  "penaltyAmount": 3000,
+  "emotion": ["curiosity", "urgency", "trust"],
+  "isLegit": false,
+  "characters": {
+    "victim": {
+      "name": "You",
+      "role": "online_shopper",
+      "avatar": "👤"
+    },
+    "attacker": {
+      "name": "Ghana Post Express",
+      "role": "fake_delivery_agent",
+      "avatar": "📦"
+    }
+  },
+  "conversation": [
+    {
+      "id": "m1",
+      "sender": "Ghana Post Express",
+      "text": "Your international package has arrived at the Accra sorting facility."
+    },
+    {
+      "id": "m2",
+      "sender": "Ghana Post Express",
+      "text": "Before delivery, customs requires receiver verification."
+    },
+    {
+      "id": "m3",
+      "sender": "Ghana Post Express",
+      "text": "Please upload your Ghana Card details and selfie through our verification portal."
+    },
+    {
+      "id": "m4",
+      "sender": "Ghana Post Express",
+      "text": "Delivery cannot continue until verification is completed."
+    }
+  ],
+  "choices": [
+    {
+      "id": "c1",
+      "text": "Upload the documents because courier companies need identity verification.",
+      "resultKey": "LOSS"
+    },
+    {
+      "id": "c2",
+      "text": "Verify the tracking number through the official courier website first.",
+      "resultKey": "SAFE"
+    }
+  ],
+  "lesson": {
+    "technique": "Fake delivery + identity harvesting",
+    "warningSigns": [
+      "Identity documents are valuable targets for scammers.",
+      "Verify requests independently before uploading documents."
+    ]
+  }
+},
+
+{
+  "id": "fake_nhis_update_016",
+  "category": "GOVERNMENT_IMPERSONATION",
+  "platform": "PHONE_CALL",
+  "difficulty": 8,
+  "phase": 5,
+  "timeLimit": 25,
+  "penaltyAmount": 2000,
+  "emotion": ["fear", "authority"],
+  "isLegit": false,
+  "characters": {
+    "victim": {
+      "name": "You",
+      "role": "nhis_member",
+      "avatar": "👤"
+    },
+    "attacker": {
+      "name": "NHIS Support",
+      "role": "fake_agent",
+      "avatar": "🏥"
+    }
+  },
+  "conversation": [
+    {
+      "id": "m1",
+      "sender": "NHIS Support",
+      "text": "Hello. We noticed your NHIS card has not been updated on the new system."
+    },
+    {
+      "id": "m2",
+      "sender": "NHIS Support",
+      "text": "Inactive members may not receive hospital coverage during emergencies."
+    },
+    {
+      "id": "m3",
+      "sender": "NHIS Support",
+      "text": "I can complete the update remotely. I only need your date of birth and verification code."
+    }
+  ],
+  "choices": [
+    {
+      "id": "c1",
+      "text": "Provide the details because they are helping activate my healthcare access.",
+      "resultKey": "LOSS"
+    },
+    {
+      "id": "c2",
+      "text": "Visit an official NHIS channel to confirm whether an update is required.",
+      "resultKey": "SAFE"
+    }
+  ],
+  "lesson": {
+    "technique": "Government impersonation + personal data theft",
+    "warningSigns": [
+      "Real organizations do not request security codes remotely.",
+      "Fear of losing services makes people act quickly."
+    ]
+  }
+},
+
+{
+  "id": "fake_university_results_payment_017",
+  "category": "EDUCATION_SCAM",
+  "platform": "WHATSAPP",
+  "difficulty": 7,
+  "phase": 4,
+  "timeLimit": 30,
+  "penaltyAmount": 1500,
+  "emotion": ["anxiety", "hope", "urgency"],
+  "isLegit": false,
+  "characters": {
+    "victim": {
+      "name": "You",
+      "role": "student",
+      "avatar": "👤"
+    },
+    "attacker": {
+      "name": "Academic Office",
+      "role": "fake_staff",
+      "avatar": "🎓"
+    }
+  },
+  "conversation": [
+    {
+      "id": "m1",
+      "sender": "Academic Office",
+      "text": "Your transcript request has been delayed due to unpaid processing charges."
+    },
+    {
+      "id": "m2",
+      "sender": "Academic Office",
+      "text": "Several graduating students have already cleared theirs."
+    },
+    {
+      "id": "m3",
+      "sender": "Academic Office",
+      "text": "Pay GHS 250 processing fee today to avoid missing your submission deadline."
+    }
+  ],
+  "choices": [
+    {
+      "id": "c1",
+      "text": "Pay immediately because graduation deadlines are important.",
+      "resultKey": "LOSS"
+    },
+    {
+      "id": "c2",
+      "text": "Confirm the request using the school's official student portal.",
+      "resultKey": "SAFE"
+    }
+  ],
+  "lesson": {
+    "technique": "Student pressure scam",
+    "warningSigns": [
+      "Scammers target important academic deadlines.",
+      "Payment requests should match official school systems."
+    ]
+  }
+},
+{
+  "id": "fake_customer_support_after_purchase_018",
+  "category": "CUSTOMER_SUPPORT_SCAM",
+  "platform": "WHATSAPP",
+  "difficulty": 9,
+  "phase": 6,
+  "timeLimit": 30,
+  "penaltyAmount": 6000,
+  "emotion": ["relief", "trust", "confusion"],
+  "isLegit": false,
+  "characters": {
+    "victim": {
+      "name": "You",
+      "role": "online_customer",
+      "avatar": "👤"
+    },
+    "attacker": {
+      "name": "Store Support",
+      "role": "fake_agent",
+      "avatar": "🛒"
+    }
+  },
+  "conversation": [
+    {
+      "id": "m1",
+      "sender": "Store Support",
+      "text": "Hello. We noticed your recent order failed during payment."
+    },
+    {
+      "id": "m2",
+      "sender": "Store Support",
+      "text": "Your card may have been charged but the order was not completed."
+    },
+    {
+      "id": "m3",
+      "sender": "Store Support",
+      "text": "To refund you, please confirm the card details used for the transaction."
+    }
+  ],
+  "choices": [
+    {
+      "id": "c1",
+      "text": "Provide the details because they are processing my refund.",
+      "resultKey": "LOSS"
+    },
+    {
+      "id": "c2",
+      "text": "Open the store app directly and check the order status.",
+      "resultKey": "SAFE"
+    }
+  ],
+  "lesson": {
+    "technique": "Fake support refund scam",
+    "warningSigns": [
+      "Refunds do not require full payment credentials.",
+      "Attackers create problems before offering a solution."
+    ]
+  }
+},
+{
+  "id": "fake_friend_data_leak_warning_019",
+  "category": "SOCIAL_ENGINEERING",
+  "platform": "WHATSAPP",
+  "difficulty": 10,
+  "phase": 6,
+  "timeLimit": 35,
+  "penaltyAmount": 5000,
+  "emotion": ["concern", "trust", "fear"],
+  "isLegit": false,
+  "characters": {
+    "victim": {
+      "name": "You",
+      "role": "social_media_user",
+      "avatar": "👤"
+    },
+    "attacker": {
+      "name": "Kwame",
+      "role": "fake_friend",
+      "avatar": "👨"
+    }
+  },
+  "conversation": [
+    {
+      "id": "m1",
+      "sender": "Kwame",
+      "text": "Bro, I saw your name in a leaked database online."
+    },
+    {
+      "id": "m2",
+      "sender": "Kwame",
+      "text": "I know someone who can remove your information before criminals use it."
+    },
+    {
+      "id": "m3",
+      "sender": "Kwame",
+      "text": "Send your Ghana Card number so they can check if your identity is exposed."
+    }
+  ],
+  "choices": [
+    {
+      "id": "c1",
+      "text": "Send my details because he is trying to protect me.",
+      "resultKey": "LOSS"
+    },
+    {
+      "id": "c2",
+      "text": "Verify the claim independently before sharing identity information.",
+      "resultKey": "SAFE"
+    }
+  ],
+  "lesson": {
+    "technique": "Fear-based identity theft",
+    "warningSigns": [
+      "Scammers create fear and then sell the solution.",
+      "Sensitive documents should not be shared casually."
+    ]
+  }
+}
+  ]
+}

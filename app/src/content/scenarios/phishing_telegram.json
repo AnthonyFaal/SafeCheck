@@ -1,0 +1,1085 @@
+{
+  "templates": [
+    {
+      "id": "sms_package_delivery_001",
+      "category": "SMISHING",
+      "platform": "SMS",
+      "difficulty": 3,
+      "phase": 2,
+      "emotion": ["anticipation", "urgency", "confusion"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "online_shopper",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Express Post",
+          "role": "fake_courier",
+          "avatar": "📦"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Express Post",
+          "text": "Notice: Your package delivery has been suspended due to an unpaid customs fee of $2.99."
+        },
+        {
+          "id": "m2",
+          "sender": "Express Post",
+          "text": "To reschedule your delivery for tomorrow, please pay the outstanding fee here: https://express-post-redelivery.info/track/88392"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and pay the small fee to get your package",
+          "resultKey": "LOSS",
+          "topicKey": "SMISHING",
+          "riskDelta": {
+            "financial": 20,
+            "identity": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the text or check your actual tracking numbers on the official carrier websites",
+          "resultKey": "SAFE",
+          "topicKey": "SMISHING",
+          "riskDelta": {
+            "financial": -15,
+            "identity": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake package delivery text (Smishing) designed to steal credit card info",
+        "warningSigns": [
+          "Legitimate postal services rarely send SMS texts demanding immediate payment via unverified links",
+          "The domain 'express-post-redelivery.info' is not an official courier website",
+          "Scammers ask for a very small fee to make you lower your guard, but they actually steal your full credit card details"
+        ],
+        "topicKey": "SMISHING"
+      }
+    },
+    {
+      "id": "facebook_marketplace_overpayment_001",
+      "category": "OVERPAYMENT_SCAM",
+      "platform": "FACEBOOK",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["guilt", "urgency", "trust"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "seller",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Sarah Jenkins",
+          "role": "fake_buyer",
+          "avatar": "👱‍♀️"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Sarah Jenkins",
+          "text": "Hi, I really want to buy the laptop you listed for $400. I just sent the money via Zelle."
+        },
+        {
+          "id": "m2",
+          "sender": "Sarah Jenkins",
+          "text": "Oh my god, I made a huge mistake! I accidentally sent you $1,000 instead of $400. Can you please check your email?"
+        },
+        {
+          "id": "m3",
+          "sender": "Sarah Jenkins",
+          "text": "My rent is due tomorrow and I'm panicking. Please, can you just refund the extra $600 to my CashApp right now?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the $600 refund immediately because you feel bad for her",
+          "resultKey": "LOSS",
+          "topicKey": "OVERPAYMENT_SCAM",
+          "riskDelta": {
+            "financial": 25,
+            "socialEngineering": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Check your actual bank account (not just the email) and tell her to dispute it with her bank",
+          "resultKey": "SAFE",
+          "topicKey": "OVERPAYMENT_SCAM",
+          "riskDelta": {
+            "financial": -20,
+            "socialEngineering": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake payment confirmation email + overpayment refund demand",
+        "warningSigns": [
+          "Scammers send a fake email that looks like it's from Zelle/PayPal saying you have 'pending funds'",
+          "They pressure you to refund the 'extra' money from your actual funds before you realize their initial payment was fake",
+          "Legitimate payment errors should be handled by the platform or bank, not through direct refunds to a different app"
+        ],
+        "topicKey": "OVERPAYMENT_SCAM"
+      }
+    },
+    {
+      "id": "whatsapp_family_emergency_001",
+      "category": "IMPOSTER_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 5,
+      "phase": 4,
+      "emotion": ["panic", "love", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "parent",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Unknown Number",
+          "role": "fake_child",
+          "avatar": "📱"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Unknown Number",
+          "text": "Hi Mom, it's me. I dropped my phone in the toilet and it's completely broken. This is my temporary number."
+        },
+        {
+          "id": "m2",
+          "sender": "Unknown Number",
+          "text": "I'm so stressed out. I have a bill that was supposed to be paid today and I can't access my banking app on this old loaner phone."
+        },
+        {
+          "id": "m3",
+          "sender": "Unknown Number",
+          "text": "Can you please send $450 to this account? I will pay you back as soon as I get a new phone and can log in."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the money quickly to help your child out of a stressful situation",
+          "resultKey": "LOSS",
+          "topicKey": "IMPOSTER_SCAM",
+          "riskDelta": {
+            "financial": 20,
+            "socialEngineering": 18
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Call your child's original phone number or ask a personal security question",
+          "resultKey": "SAFE",
+          "topicKey": "IMPOSTER_SCAM",
+          "riskDelta": {
+            "financial": -15,
+            "socialEngineering": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Hi Mom/Dad scam exploiting familial trust and fabricated emergencies",
+        "warningSigns": [
+          "The sender claims their original phone is lost/broken to explain the unrecognized number",
+          "Creates an immediate financial emergency that requires urgent action",
+          "Scammers use generic terms like 'Mom' or 'Dad' without using specific names, casting a wide net"
+        ],
+        "topicKey": "IMPOSTER_SCAM"
+      }
+    },
+    {
+      "id": "instagram_influencer_giveaway_001",
+      "category": "SOCIAL_MEDIA_PHISHING",
+      "platform": "INSTAGRAM",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["excitement", "greed", "trust"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "follower",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "MrBeast_Giveaways_88",
+          "role": "fake_influencer",
+          "avatar": "🎁"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MrBeast_Giveaways_88",
+          "text": "🎉 CONGRATULATIONS! You have been randomly selected as one of the 10 winners of our $10,000 cash giveaway!"
+        },
+        {
+          "id": "m2",
+          "sender": "MrBeast_Giveaways_88",
+          "text": "To claim your prize, you must verify your identity to prove you are not a bot."
+        },
+        {
+          "id": "m3",
+          "sender": "MrBeast_Giveaways_88",
+          "text": "Click here: https://instaprize-claim-verify.com. Log in with your Instagram credentials to confirm your username, and we will send the funds."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and log in to claim your $10,000 prize",
+          "resultKey": "LOSS",
+          "topicKey": "SOCIAL_MEDIA_PHISHING",
+          "riskDelta": {
+            "password": 25,
+            "financial": 5
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Block the account. Real giveaways don't require you to 'log in' to third-party sites.",
+          "resultKey": "SAFE",
+          "topicKey": "SOCIAL_MEDIA_PHISHING",
+          "riskDelta": {
+            "password": -15,
+            "financial": -5
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake influencer impersonation + credential harvesting portal",
+        "warningSigns": [
+          "The account handle has random numbers or slight misspellings of the real influencer's name",
+          "Real giveaways will never ask for your password to verify your identity",
+          "The domain 'https://instaprize-claim-verify.com' is a fake phishing site designed to steal your account"
+        ],
+        "topicKey": "SOCIAL_MEDIA_PHISHING"
+      }
+    },
+    {
+      "id": "phone_tech_support_001",
+      "category": "TECH_SUPPORT_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 3,
+      "phase": 2,
+      "emotion": ["panic", "trust", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "computer_user",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Microsoft Security",
+          "role": "fake_support",
+          "avatar": "🎧"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Microsoft Security",
+          "text": "Hello, this is Agent Smith from Microsoft Windows Security. We received an alert that your computer has been infected with the Zeus Trojan."
+        },
+        {
+          "id": "m2",
+          "sender": "Microsoft Security",
+          "text": "This virus is currently stealing your banking passwords. Do not turn off your computer or the data will be permanently corrupted."
+        },
+        {
+          "id": "m3",
+          "sender": "Microsoft Security",
+          "text": "I can help you remove it for free. Please open your browser, go to https://anydesk-support.com, and download the remote connection tool so I can delete the hackers from your system."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Download the software and give the agent access to fix your computer",
+          "resultKey": "LOSS",
+          "topicKey": "TECH_SUPPORT_SCAM",
+          "riskDelta": {
+            "password": 25,
+            "financial": 20
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Hang up immediately. Microsoft does not call customers about viruses.",
+          "resultKey": "SAFE",
+          "topicKey": "TECH_SUPPORT_SCAM",
+          "riskDelta": {
+            "password": -15,
+            "financial": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake virus warning + Remote access software",
+        "warningSigns": [
+          "Microsoft, Apple, and Google do not proactively call users to tell them their computers are infected",
+          "Threats of data corruption if you restart are lies designed to keep you on the phone",
+          "Legitimate tech companies will not ask you to install remote desktop software like AnyDesk or TeamViewer to fix your PC"
+        ],
+        "topicKey": "TECH_SUPPORT_SCAM"
+      }
+    },
+    {
+      "id": "whatsapp_pig_butchering_001",
+      "category": "INVESTMENT_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 6,
+      "phase": 4,
+      "emotion": ["affection", "greed", "trust"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "single_professional",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Elena 💖",
+          "role": "scammer",
+          "avatar": "👩"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Elena 💖",
+          "text": "Good morning! Did you sleep well? I was thinking about our chat last night. I really feel a strong connection with you."
+        },
+        {
+          "id": "m2",
+          "sender": "Elena 💖",
+          "text": "By the way, my uncle just shared the inside node data for Ethereum today. I just made $4,000 in 10 minutes!"
+        },
+        {
+          "id": "m3",
+          "sender": "Elena 💖",
+          "text": "I want us to build a future together. You should download the GlobalCrypto-FX app from the link I send you. Just put in $500 to start and I'll teach you how to trade the node data."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Download the app and invest $500 so you can build a future together",
+          "resultKey": "LOSS",
+          "topicKey": "INVESTMENT_SCAM",
+          "riskDelta": {
+            "financial": 30,
+            "socialEngineering": 25
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Recognize the scam, block the number, and do not click any links",
+          "resultKey": "SAFE",
+          "topicKey": "INVESTMENT_SCAM",
+          "riskDelta": {
+            "financial": -20,
+            "socialEngineering": -20
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Pig Butchering (Romance + Crypto Investment Fraud)",
+        "warningSigns": [
+          "Scammers spend weeks or months building an emotional or romantic connection before bringing up money",
+          "They always have a 'wealthy relative' who has 'insider information' on crypto or forex trends",
+          "They force you to use unverified, third-party trading apps which they completely control to fake your profits"
+        ],
+        "topicKey": "INVESTMENT_SCAM"
+      }
+    },
+    {
+      "id": "linkedin_document_phish_001",
+      "category": "LINKEDIN_PHISHING",
+      "platform": "LINKEDIN",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["curiosity", "professionalism", "trust"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "professional",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "David Chen (CEO)",
+          "role": "compromised_account",
+          "avatar": "👔"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "David Chen (CEO)",
+          "text": "Hello, I hope you're having a productive week. I've been following your career and I'm very impressed with your background."
+        },
+        {
+          "id": "m2",
+          "sender": "David Chen (CEO)",
+          "text": "My firm is expanding and I have a confidential strategic proposal that I believe you'd be perfect for."
+        },
+        {
+          "id": "m3",
+          "sender": "David Chen (CEO)",
+          "text": "I've uploaded the executive summary here: https://onedrive-secure-business.com/document-view. Please log in with your Microsoft 365 work email to review it."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and log in with your work email to view the proposal",
+          "resultKey": "LOSS",
+          "topicKey": "LINKEDIN_PHISHING",
+          "riskDelta": {
+            "password": 20,
+            "socialEngineering": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Message him back to ask for more details without clicking the link",
+          "resultKey": "SAFE",
+          "topicKey": "LINKEDIN_PHISHING",
+          "riskDelta": {
+            "password": -15,
+            "socialEngineering": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Compromised Professional Account + Credential Harvesting",
+        "warningSigns": [
+          "A senior executive sharing 'confidential' documents via random cold messages is highly unusual",
+          "The domain 'onedrive-secure-business.com' is fake; real OneDrive links are on microsoft.com or live.com",
+          "Scammers hack legitimate LinkedIn accounts of CEOs/Directors to make their phishing links look trustworthy"
+        ],
+        "topicKey": "LINKEDIN_PHISHING"
+      }
+    },
+    {
+      "id": "email_booking_platform_bypass_001",
+      "category": "PLATFORM_BYPASS_SCAM",
+      "platform": "EMAIL",
+      "difficulty": 5,
+      "phase": 3,
+      "emotion": ["panic", "urgency", "frustration"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "traveler",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Oceanview Villa Management",
+          "role": "fake_host",
+          "avatar": "🏨"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Oceanview Villa Management",
+          "text": "URGENT: Regarding your upcoming stay on Dec 15th - Dec 20th."
+        },
+        {
+          "id": "m2",
+          "sender": "Oceanview Villa Management",
+          "text": "Our payment processor experienced a glitch, and your credit card was declined by the booking platform. Your reservation will be automatically cancelled in 12 hours."
+        },
+        {
+          "id": "m3",
+          "sender": "Oceanview Villa Management",
+          "text": "To keep your booking, please complete the payment securely through our direct terminal here: https://pay-oceanview.stripe-terminal.com. Do not reply to the platform app, use this link directly."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay via the provided link quickly so you don't lose your vacation spot",
+          "resultKey": "LOSS",
+          "topicKey": "PLATFORM_BYPASS_SCAM",
+          "riskDelta": {
+            "financial": 25,
+            "identity": 10
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Log directly into the booking app to check the status",
+          "resultKey": "SAFE",
+          "topicKey": "PLATFORM_BYPASS_SCAM",
+          "riskDelta": {
+            "financial": -15,
+            "identity": -5
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Platform Bypass / Fake Payment Link",
+        "warningSigns": [
+          "Hosts explicitly asking you to ignore the official platform app and pay externally are violating terms of service and are likely scammers",
+          "Scammers use the threat of a cancelled reservation to create panic and rush your payment",
+          "If your card truly failed, the official platform (like Airbnb or Booking.com) will notify you directly within their secure app"
+        ],
+        "topicKey": "PLATFORM_BYPASS_SCAM"
+      }
+    },
+    {
+      "id": "fake_bank_fraud_team_002",
+      "category": "BANK_IMPERSONATION",
+      "platform": "PHONE_CALL",
+      "difficulty": 8,
+      "phase": 5,
+      "emotion": ["fear", "trust", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "caller": {
+          "name": "Bank Fraud Department",
+          "role": "fake_bank_agent",
+          "avatar": "🏦"
+        },
+        "manager": {
+          "name": "Daniel",
+          "role": "fake_supervisor",
+          "avatar": "👔"
+        },
+        "victim": {
+          "name": "You",
+          "role": "bank_customer",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Bank Fraud Department",
+          "text": "Hello, we noticed a suspicious GHS 3,200 transaction attempt on your account from an unknown device."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "How do I know this is really my bank? This number is not listed on your website."
+        },
+        {
+          "id": "m3",
+          "sender": "Bank Fraud Department",
+          "text": "Good question. For security reasons, our fraud response team uses temporary outbound numbers. I will connect you to my supervisor for verification."
+        },
+        {
+          "id": "m4",
+          "sender": "Daniel",
+          "text": "I am the fraud supervisor. We already blocked the transaction. To complete the cancellation, confirm the 6-digit code sent to your phone."
+        },
+        {
+          "id": "m5",
+          "sender": "Daniel",
+          "text": "This is not your PIN. It only confirms that you are the account owner."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the verification code so the bank can cancel the transaction",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "End the call and contact the bank using the number on your card",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake fraud investigation",
+        "warningSigns": [
+          "Banks do not need OTPs to stop fraud",
+          "Never trust caller identity alone"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+
+    {
+      "id": "fake_delivery_driver_002",
+      "category": "DELIVERY_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 5,
+      "phase": 3,
+      "emotion": ["confusion", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "driver": {
+          "name": "DHL Driver",
+          "role": "fake_driver",
+          "avatar": "📦"
+        },
+        "office": {
+          "name": "DHL Verification Desk",
+          "role": "fake_support",
+          "avatar": "🏢"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "DHL Driver",
+          "text": "Hello, I have a package addressed to you, but your delivery address is incomplete."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "I did not receive any tracking message. How do I know this is DHL?"
+        },
+        {
+          "id": "m3",
+          "sender": "DHL Driver",
+          "text": "I understand. I will transfer you to our verification desk so you can confirm."
+        },
+        {
+          "id": "m4",
+          "sender": "DHL Verification Desk",
+          "text": "Your package is already waiting. We only need your email verification code to update the delivery address."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Give the verification code so the package can be delivered",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Check the tracking number independently before sharing anything",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake delivery problem",
+        "warningSigns": [
+          "Unexpected deliveries should be verified with tracking numbers",
+          "Delivery companies do not need email OTPs"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+
+    {
+      "id": "legit_mobile_upgrade_003",
+      "category": "TELCO_SERVICE",
+      "platform": "SMS",
+      "difficulty": 3,
+      "phase": 2,
+      "emotion": ["curiosity", "security"],
+      "isLegit": true,
+      "characters": {
+        "network": {
+          "name": "Mobile Network",
+          "role": "official_service"
+        },
+        "customer": {
+          "name": "You",
+          "role": "subscriber"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mobile Network",
+          "text": "Your SIM upgrade request has been received."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "I want to confirm this is real. I do not want to share codes."
+        },
+        {
+          "id": "m3",
+          "sender": "Mobile Network",
+          "text": "Correct. We will never request your PIN or OTP. Visit any service center with your ID to complete the upgrade."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Visit the official service center with your ID",
+          "resultKey": "SAFE",
+          "topicKey": "TELCO_SERVICE"
+        },
+        {
+          "id": "c2",
+          "text": "Send my PIN to confirm ownership remotely",
+          "resultKey": "LOSS",
+          "topicKey": "TELCO_SERVICE"
+        }
+      ],
+      "lesson": {
+        "technique": "Legitimate service verification",
+        "warningSigns": [
+          "Real companies avoid requesting secrets",
+          "Sensitive changes require official channels"
+        ],
+        "topicKey": "TELCO_SERVICE"
+      }
+    },
+
+    {
+      "id": "fake_ghana_card_update_004",
+      "category": "GOVERNMENT_IMPERSONATION",
+      "platform": "WHATSAPP",
+      "difficulty": 7,
+      "phase": 4,
+      "emotion": ["fear", "authority"],
+      "isLegit": false,
+      "characters": {
+        "official": {
+          "name": "NIA Officer",
+          "role": "fake_government_agent"
+        },
+        "supervisor": {
+          "name": "NIA Supervisor",
+          "role": "fake_manager"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "NIA Officer",
+          "text": "Your Ghana Card record has a verification problem and may affect your banking access."
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Why are you contacting me through WhatsApp?"
+        },
+        {
+          "id": "m3",
+          "sender": "NIA Officer",
+          "text": "Many citizens cannot visit offices, so our digital support team helps remotely."
+        },
+        {
+          "id": "m4",
+          "sender": "NIA Supervisor",
+          "text": "To correct the record, send your Ghana Card photo and the verification code sent to your phone."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the Ghana Card photo and verification code",
+          "resultKey": "LOSS",
+          "topicKey": "IDENTITY_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Visit an official NIA office to resolve the issue",
+          "resultKey": "SAFE",
+          "topicKey": "IDENTITY_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Government identity theft",
+        "warningSigns": [
+          "Identity verification should happen through official offices",
+          "OTP codes should never be shared"
+        ],
+        "topicKey": "IDENTITY_THEFT"
+      }
+    },
+    {
+      "id": "bank_security_alert_014",
+      "category": "BANK_IMPERSONATION",
+      "platform": "SMS",
+      "difficulty": 5,
+      "phase": 4,
+      "emotion": ["fear", "urgency", "trust"],
+      "isLegit": false,
+      "characters": {
+        "victim": {
+          "name": "You",
+          "role": "bank_customer",
+          "avatar": "👤"
+        },
+        "attacker": {
+          "name": "Ecobank Security",
+          "role": "fake_bank_agent",
+          "avatar": "🏦"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Ecobank Security",
+          "text": "SECURITY ALERT: We detected suspicious activity on your account from an unknown device."
+        },
+        {
+          "id": "m2",
+          "sender": "Ecobank Security",
+          "text": "Your account has been temporarily restricted. Verify your identity now to restore access."
+        },
+        {
+          "id": "m3",
+          "sender": "Ecobank Security",
+          "text": "Visit ecobank-secure-login.net and enter your account number, password, and OTP."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and verify your account immediately",
+          "resultKey": "LOSS",
+          "topicKey": "BANK_IMPERSONATION",
+          "riskDelta": {
+            "financial": 30,
+            "password": 25
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Open the official banking app or call the bank directly",
+          "resultKey": "SAFE",
+          "topicKey": "BANK_IMPERSONATION",
+          "riskDelta": {
+            "financial": -20,
+            "password": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake bank security warning + credential harvesting",
+        "warningSigns": [
+          "Banks do not request passwords or OTPs through SMS links",
+          "Fake domains often copy bank names with extra words",
+          "Fear-based messages are designed to make users act without checking"
+        ],
+        "topicKey": "BANK_IMPERSONATION"
+      }
+    },
+    {
+      "id": "university_scholarship_fee_015",
+      "category": "ADVANCE_FEE_FRAUD",
+      "platform": "WHATSAPP",
+      "difficulty": 6,
+      "phase": 4,
+      "emotion": ["hope", "excitement", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "attacker": {
+          "name": "Scholarship Board Ghana",
+          "role": "fake_official",
+          "avatar": "🎓"
+        },
+        "victim": {
+          "name": "You",
+          "role": "student",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Scholarship Board Ghana",
+          "text": "Congratulations! You have been selected for the international student scholarship program."
+        },
+        {
+          "id": "m2",
+          "sender": "Scholarship Board Ghana",
+          "text": "Your documents have passed the first stage. Only 20 students were selected nationwide."
+        },
+        {
+          "id": "m3",
+          "sender": "Scholarship Board Ghana",
+          "text": "Pay GHS 650 processing and embassy verification fees today to secure your scholarship."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the fee because losing the scholarship would be painful",
+          "resultKey": "LOSS",
+          "topicKey": "ADVANCE_FEE_FRAUD",
+          "riskDelta": {
+            "financial": 25
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Verify the scholarship through the university or official website",
+          "resultKey": "SAFE",
+          "topicKey": "ADVANCE_FEE_FRAUD",
+          "riskDelta": {
+            "financial": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake scholarship opportunity + upfront payment",
+        "warningSigns": [
+          "Real scholarships do not require random processing payments through personal accounts",
+          "Limited slots are used to create pressure",
+          "Always verify scholarship announcements independently"
+        ],
+        "topicKey": "ADVANCE_FEE_FRAUD"
+      }
+    },
+    {
+      "id": "momo_agent_upgrade_016",
+      "category": "MOBILE_MONEY_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 5,
+      "phase": 3,
+      "emotion": ["trust", "urgency"],
+      "isLegit": false,
+      "characters": {
+        "attacker": {
+          "name": "MTN Agent",
+          "role": "fake_mobile_money_agent",
+          "avatar": "📞"
+        },
+        "victim": {
+          "name": "You",
+          "role": "momo_user",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MTN Agent",
+          "text": "Good afternoon. We are upgrading all MoMo accounts to a new security system."
+        },
+        {
+          "id": "m2",
+          "sender": "MTN Agent",
+          "text": "Your account will be blocked if you do not complete the upgrade today."
+        },
+        {
+          "id": "m3",
+          "sender": "MTN Agent",
+          "text": "I have sent a confirmation message. Read your PIN and OTP so I can complete the upgrade."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Provide the PIN and OTP to avoid losing access",
+          "resultKey": "LOSS",
+          "topicKey": "MOBILE_MONEY_SCAM",
+          "riskDelta": {
+            "financial": 30
+          }
+        },
+        {
+          "id": "c2",
+          "text": "End the call and contact MTN using official channels",
+          "resultKey": "SAFE",
+          "topicKey": "MOBILE_MONEY_SCAM",
+          "riskDelta": {
+            "financial": -20
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake account upgrade requiring PIN",
+        "warningSigns": [
+          "Mobile money agents never need your PIN",
+          "Account upgrade threats are common scam tactics",
+          "OTP messages usually explain what action they approve"
+        ],
+        "topicKey": "MOBILE_MONEY_SCAM"
+      }
+    },
+    {
+      "id": "fake_airdrop_crypto_017",
+      "category": "CRYPTO_SCAM",
+      "platform": "TELEGRAM",
+      "difficulty": 6,
+      "phase": 4,
+      "emotion": ["curiosity", "greed", "excitement"],
+      "isLegit": false,
+      "characters": {
+        "attacker": {
+          "name": "Crypto Ghana Official",
+          "role": "fake_crypto_admin",
+          "avatar": "🪙"
+        },
+        "victim": {
+          "name": "You",
+          "role": "crypto_user",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Crypto Ghana Official",
+          "text": "Exclusive Ghana crypto giveaway. Early users receive free tokens worth up to $5,000."
+        },
+        {
+          "id": "m2",
+          "sender": "Crypto Ghana Official",
+          "text": "Connect your wallet now to verify eligibility."
+        },
+        {
+          "id": "m3",
+          "sender": "Crypto Ghana Official",
+          "text": "Approve the transaction request to receive your free tokens."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Connect wallet and approve the transaction",
+          "resultKey": "LOSS",
+          "topicKey": "CRYPTO_SCAM",
+          "riskDelta": {
+            "financial": 35
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Ignore it and verify the project through official sources",
+          "resultKey": "SAFE",
+          "topicKey": "CRYPTO_SCAM",
+          "riskDelta": {
+            "financial": -15
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake token giveaway + wallet draining",
+        "warningSigns": [
+          "Free money offers often require dangerous wallet permissions",
+          "Never approve unknown transactions",
+          "Fake Telegram admins impersonate real projects"
+        ],
+        "topicKey": "CRYPTO_SCAM"
+      }
+    }
+  ]
+}

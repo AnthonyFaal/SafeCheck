@@ -1,0 +1,1085 @@
+{
+  "templates": [
+    {
+      "id": "momo_wrong_transfer_refund_002",
+      "category": "MOBILE_MONEY",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 20,
+      "penaltyAmount": 850,
+      "isLegit": false,
+      "emotion": ["panic", "empathy", "urgency"],
+      "characters": {
+        "friend": { "name": "Kwame", "role": "hacked_friend", "avatar": "👨🏾" },
+        "victim": { "name": "You", "role": "account_holder", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Kwame",
+          "text": "Chale, I'm in deep trouble. I was trying to pay my supplier for goods and mistakenly typed your number. Did you get the GHS 850 alert?",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Kwame",
+          "text": "I called MTN and they said they can't reverse it manually. They are sending an 'Approval Reversal' prompt to your phone right now.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Kwame",
+          "text": "The supplier is at my shop threatening me with police. Please, immediately the prompt drops, just enter your PIN so the money bounces back to him.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Kwame",
+          "text": "Please chale, my whole business is on the line right now. Have you seen the prompt?",
+          "delay": 3500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Enter your PIN on the pop-up prompt to 'reverse' the funds and save your friend.",
+          "resultKey": "LOSS",
+          "topicKey": "MOMO_WRONG_TRANSFER"
+        },
+        {
+          "id": "c2",
+          "text": "Decline the prompt and call Kwame directly. Entering your PIN means YOU are sending money.",
+          "resultKey": "SAFE",
+          "topicKey": "MOMO_WRONG_TRANSFER"
+        }
+      ],
+      "lesson": {
+        "technique": "Account Takeover (Hacked WhatsApp) + Debit Request Manipulation",
+        "warningSigns": [
+          "Scammers hack a friend's WhatsApp to use your existing trust against you.",
+          "The 'reversal prompt' is actually a standard MoMo payment request (debit). Entering your PIN authorizes a deduction from your account.",
+          "Always call the person on their regular phone number to verify unusual urgent requests."
+        ],
+        "topicKey": "MOMO_WRONG_TRANSFER"
+      }
+    },
+    {
+      "id": "momo_fake_customer_care_001",
+      "category": "MOBILE_MONEY",
+      "platform": "SMS",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 25,
+      "penaltyAmount": 1500,
+      "isLegit": false,
+      "emotion": ["fear", "authority", "compliance"],
+      "characters": {
+        "agent": { "name": "MTN-FraudDesk", "role": "spoofed_support", "avatar": "🛡️" },
+        "victim": { "name": "You", "role": "subscriber", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MTN-FraudDesk",
+          "text": "SECURITY ALERT: An unauthorized device (Infinix Hot 10) in Kumasi is currently attempting to link to your MoMo wallet.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "MTN-FraudDesk",
+          "text": "To secure your funds, we are initiating a temporary security block. A system prompt will appear on your screen shortly.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "MTN-FraudDesk",
+          "text": "MTN will NEVER ask for your PIN. Do NOT text us your PIN. Simply enter it on the secure prompt to verify you are the true owner and disconnect the hacker.",
+          "delay": 4500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "MTN-FraudDesk",
+          "text": "Failure to verify within 60 seconds will result in total account suspension.",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Enter your PIN on the prompt since they explicitly told you NOT to share it with them.",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the message and the prompt. MTN does not block hackers via push prompts.",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Reverse-Psychology Spoofing + Push Notification Attack",
+        "warningSigns": [
+          "Scammers build false trust by reminding you 'never to share your PIN', while tricking you into typing it into a fraudulent payment prompt.",
+          "Telecommunications networks handle fraud directly on their backend; they never require you to enter a PIN to 'block a hacker'.",
+          "The specific details (e.g., 'Infinix Hot 10 in Kumasi') are fabricated to make the threat feel real."
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "job_offer_fake_recruitment_001",
+      "category": "JOB_SCAM",
+      "platform": "EMAIL",
+      "difficulty": 7,
+      "phase": 3,
+      "timeLimit": 30,
+      "penaltyAmount": 450,
+      "isLegit": false,
+      "emotion": ["excitement", "relief", "professionalism"],
+      "characters": {
+        "recruiter": { "name": "Tullow Oil HR", "role": "spear_phisher", "avatar": "🏢" },
+        "applicant": { "name": "You", "role": "job_seeker", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Tullow Oil HR",
+          "text": "Dear Applicant, following your recent submission, you have been shortlisted for the Remote Data Analyst role at Tullow Ghana (Salary: GHS 8,500/month).",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Tullow Oil HR",
+          "text": "Your virtual MS Teams interview is scheduled for tomorrow at 10:00 AM. Please access the candidate portal to sign your NDA: https://tullow-careers-gh.portal-login.com",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Tullow Oil HR",
+          "text": "Note: A mandatory police background check fee of GHS 450 is required by our third-party vetting agency via the portal. This will be fully reimbursed in your first paycheck.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Tullow Oil HR",
+          "text": "Kindly complete onboarding by 5 PM today or the slot goes to the next candidate.",
+          "delay": 3500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and pay the GHS 450 background check fee to secure the interview.",
+          "resultKey": "LOSS",
+          "topicKey": "JOB_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Delete the email. Legitimate multinational companies do not charge candidates for background checks.",
+          "resultKey": "SAFE",
+          "topicKey": "JOB_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Corporate Impersonation + Advance Fee Fraud",
+        "warningSigns": [
+          "The URL 'tullow-careers-gh.portal-login.com' is a fake domain designed to look official.",
+          "No legitimate company (especially large ones like Tullow) asks candidates to pay for their own background checks upfront.",
+          "The promise of 'reimbursement in the first paycheck' is a classic bait to lower your resistance to paying the fee."
+        ],
+        "topicKey": "JOB_SCAM"
+      }
+    },
+    {
+      "id": "facebook_marketplace_fake_payment_001",
+      "category": "ONLINE_MARKETPLACE",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 15,
+      "penaltyAmount": 4500,
+      "isLegit": false,
+      "emotion": ["urgency", "pressure", "confusion"],
+      "characters": {
+        "buyer": { "name": "Nii (Buyer)", "role": "scammer", "avatar": "🛒" },
+        "victim": { "name": "You", "role": "seller", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Nii (Buyer)",
+          "text": "Boss, I have sent the GHS 4,500 for the MacBook. Did you get the MTN SMS? The network is very slow today so the balance might take a few minutes to update.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Nii (Buyer)",
+          "text": "My Bolt rider is currently at your gate honking. Please hand over the laptop to him, I have a flight to catch in an hour.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Nii (Buyer)",
+          "text": "[Image: Perfectly forged MTN MoMo SMS alert showing GHS 4,500 sent to you]. Look, the money has left my account. I can't reverse it.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Nii (Buyer)",
+          "text": "Please don't waste the rider's time, I'm paying him per minute for waiting. Just give it to him!",
+          "delay": 2000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Trust the SMS screenshot and the urgency, and hand the laptop to the rider.",
+          "resultKey": "LOSS",
+          "topicKey": "FAKE_PAYMENT"
+        },
+        {
+          "id": "c2",
+          "text": "Make the rider wait. Dial *170# and verify the funds are actually in your MoMo wallet.",
+          "resultKey": "SAFE",
+          "topicKey": "FAKE_PAYMENT"
+        }
+      ],
+      "lesson": {
+        "technique": "Spoofed Alert + Physical Proximity Urgency (The Rider Scam)",
+        "warningSigns": [
+          "Scammers use fake SMS generator apps to create perfect replicas of MTN Mobile Money alerts.",
+          "The 'Bolt rider at the gate' creates intense physical pressure to bypass your verification protocols.",
+          "Never release high-value goods based on screenshots, network excuses, or text messages. Only trust a successful USSD balance check."
+        ],
+        "topicKey": "FAKE_PAYMENT"
+      }
+    },
+    {
+      "id": "ecg_prepaid_meter_001",
+      "category": "UTILITY_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 500,
+      "isLegit": false,
+      "emotion": ["frustration", "relief", "greed"],
+      "characters": {
+        "agent": { "name": "ECG Vending Agent", "role": "scammer", "avatar": "⚡" },
+        "customer": { "name": "You", "role": "meter_owner", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "ECG Vending Agent",
+          "text": "Hello, this is ECG Prepaid Vending Support. We noticed the ECG PowerApp is currently down in your district and meters are not updating.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "ECG Vending Agent",
+          "text": "As a weekend promo to compensate for the network failure, we are doing a manual backdoor top-up. Pay GHS 500 and receive GHS 1,200 worth of credit on your meter.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "ECG Vending Agent",
+          "text": "Send your meter number and make the payment to the official ECG Merchant line: 055XXXXXXX.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "ECG Vending Agent",
+          "text": "Are you buying? The promo window closes in 10 minutes when the server restarts.",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 500 to get the bonus credit and avoid sleeping in darkness.",
+          "resultKey": "LOSS",
+          "topicKey": "UTILITY_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the message. ECG does not offer 'backdoor' top-ups via personal WhatsApp numbers.",
+          "resultKey": "SAFE",
+          "topicKey": "UTILITY_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Exploiting Service Outages + Too-Good-To-Be-True Offers",
+        "warningSigns": [
+          "Scammers monitor times when utility apps (like ECG PowerApp) have genuine downtimes to make their outreach seem relevant.",
+          "Legitimate utility companies do not offer 140% bonus credit for paying through informal channels.",
+          "Urgency ('server restarts in 10 minutes') is used to stop you from double-checking with the official ECG helpline."
+        ],
+        "topicKey": "UTILITY_SCAM"
+      }
+    },
+    {
+      "id": "hospital_emergency_trotro_002",
+      "category": "IMPOSTER_SCAM",
+      "platform": "CALL_SIMULATION",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 15,
+      "penaltyAmount": 1500,
+      "isLegit": false,
+      "emotion": ["panic", "fear", "empathy"],
+      "characters": {
+        "caller": { "name": "Nurse Ama - 37 Military Hospital", "role": "imposter", "avatar": "🏥" },
+        "victim": { "name": "You", "role": "emergency_contact", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Nurse Ama - 37 Military Hospital",
+          "text": "Hello, please is this Kwame's brother? I am calling from the trauma ward at 37 Military Hospital.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Nurse Ama - 37 Military Hospital",
+          "text": "He was just brought in from a terrible trotro accident on the Madina highway. He has lost a lot of blood and is unconscious.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Nurse Ama - 37 Military Hospital",
+          "text": "The blood bank needs GHS 1,500 immediately to release 3 pints of O-positive blood for his surgery. We cannot start without it.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Nurse Ama - 37 Military Hospital",
+          "text": "His phone is smashed but we got your number from his SIM. Send the money to the ward MoMo line right now, his pulse is dropping!",
+          "delay": 3500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Panic and send the GHS 1,500 immediately to save your brother's life.",
+          "resultKey": "LOSS",
+          "topicKey": "IMPOSTER_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Hang up and call your brother's phone directly, or ask the 'nurse' for specific details only he would know.",
+          "resultKey": "SAFE",
+          "topicKey": "IMPOSTER_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Fabricated Medical Emergency (Grandparent/Relative Scam)",
+        "warningSigns": [
+          "The scammer induces extreme panic and distress, hijacking your brain's logical processing.",
+          "Hospitals in Ghana do not call relatives demanding MoMo payments to personal numbers before initiating lifesaving trauma care.",
+          "Scammers often get names from truecaller, hacked social media, or stolen contact lists to make the lie sound highly personalized."
+        ],
+        "topicKey": "IMPOSTER_SCAM"
+      }
+    },
+    {
+      "id": "dvla_fast_track_003",
+      "category": "GOVERNMENT_SERVICE",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 20,
+      "penaltyAmount": 800,
+      "isLegit": false,
+      "emotion": ["impatience", "trust", "convenience"],
+      "characters": {
+        "agent": { "name": "Mr. Ofori (DVLA Protocol)", "role": "goro_boy", "avatar": "🚘" },
+        "victim": { "name": "You", "role": "driver", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mr. Ofori (DVLA Protocol)",
+          "text": "Chief, I saw your file on the desk for the new smart Driver's License. The queue for biometric capture is currently backed up for 3 weeks.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Mr. Ofori (DVLA Protocol)",
+          "text": "I can run it through the VIP protocol system. You won't even have to come to the office. Just send a white-background selfie and a picture of your signature.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Mr. Ofori (DVLA Protocol)",
+          "text": "The VIP processing fee is GHS 800. Send it now so I can print the temporary card for you by 2 PM today.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. Ofori (DVLA Protocol)",
+          "text": "I am leaving the printing room soon. Let me know if I should drop your file.",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the money and photos to skip the long DVLA queues.",
+          "resultKey": "LOSS",
+          "topicKey": "GOVERNMENT_SERVICE"
+        },
+        {
+          "id": "c2",
+          "text": "Decline the offer. Biometric capture must always be done in person at an official DVLA center.",
+          "resultKey": "SAFE",
+          "topicKey": "GOVERNMENT_SERVICE"
+        }
+      ],
+      "lesson": {
+        "technique": "Bureaucratic Bypass (Goro Boy Scam)",
+        "warningSigns": [
+          "Scammers exploit the frustration of long queues at government agencies to offer fake 'fast-track' services.",
+          "It is technologically and legally impossible to generate a valid biometric smart license using a WhatsApp selfie.",
+          "Paying a 'protocol' agent via MoMo guarantees you will either lose your money or receive a fake license that will get you arrested."
+        ],
+        "topicKey": "GOVERNMENT_SERVICE"
+      }
+    },
+    {
+      "id": "real_estate_deposit_fomo_004",
+      "category": "REAL_ESTATE_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 30,
+      "penaltyAmount": 1200,
+      "isLegit": false,
+      "emotion": ["desperation", "FOMO", "hope"],
+      "characters": {
+        "agent": { "name": "Properties GH (Agent)", "role": "fake_agent", "avatar": "🏠" },
+        "client": { "name": "You", "role": "house_hunter", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Properties GH (Agent)",
+          "text": "Good afternoon. Regarding the 2-bedroom apartment at East Legon you called about, the landlord just reduced the rent to GHS 1,500 a month.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Properties GH (Agent)",
+          "text": "[Video: Very neat, luxurious apartment]. I just finished taking a video of it. It's fully furnished.",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Properties GH (Agent)",
+          "text": "Another client is currently driving from Tema to pay for it right now. If you want me to hold it for you to view tomorrow, you need to send a commitment fee of GHS 1,200.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Properties GH (Agent)",
+          "text": "The Tema guy is almost here. Should I give him the keys?",
+          "delay": 3500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the GHS 1,200 commitment fee immediately so you don't lose the cheap apartment.",
+          "resultKey": "LOSS",
+          "topicKey": "REAL_ESTATE_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Refuse to pay. Never send money for an apartment you haven't physically viewed and verified.",
+          "resultKey": "SAFE",
+          "topicKey": "REAL_ESTATE_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Phantom Rental & Artificial Scarcity",
+        "warningSigns": [
+          "The price is completely unrealistic. A luxurious, fully furnished 2-bedroom in East Legon for GHS 1,500/month is a major red flag.",
+          "The 'other client driving from Tema' is a classic high-pressure sales tactic to create FOMO (Fear Of Missing Out).",
+          "Scammers steal videos of Airbnbs or foreign apartments and use them to collect 'commitment fees' from desperate house hunters."
+        ],
+        "topicKey": "REAL_ESTATE_SCAM"
+      }
+    },
+    {
+"id": "momo_double_agent_security_001",
+"category": "MOBILE_MONEY",
+"platform": "PHONE_CALL",
+"difficulty": 10,
+"phase": 6,
+"timeLimit": 45,
+"penaltyAmount": 5000,
+"isLegit": false,
+"emotion": [
+  "fear",
+  "confusion",
+  "trust"
+],
+"characters": {
+  "caller1": {
+    "name": "Kwesi",
+    "role": "fake_customer",
+    "avatar": "📞"
+  },
+  "caller2": {
+    "name": "MTN Security Desk",
+    "role": "fake_support_agent",
+    "avatar": "🟡"
+  },
+  "victim": {
+    "name": "You",
+    "role": "momo_customer",
+    "avatar": "👤"
+  }
+},
+"conversation": [
+{
+"id":"m1",
+"sender":"Kwesi",
+"text":"Hello boss. I mistakenly transferred GHS 1,800 to your MoMo number. Please don't spend it, I am trying to reverse it.",
+"delay":2000
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"Your number is not familiar. I don't know if this is real.",
+"delay":3000
+},
+{
+"id":"m3",
+"sender":"Kwesi",
+"text":"I understand. I have contacted MTN already. Their fraud department will call you to confirm the reversal.",
+"delay":3000
+},
+{
+"id":"m4",
+"sender":"MTN Security Desk",
+"text":"Good afternoon. We are calling regarding a mistaken transfer reported from this number ending 4421.",
+"delay":5000
+},
+{
+"id":"m5",
+"sender":"MTN Security Desk",
+"text":"You are correct to be careful. MTN will never ask for your PIN. We only need you to approve the secure ownership verification request sent to your phone.",
+"delay":5000
+},
+{
+"id":"m6",
+"sender":"System",
+"text":"MoMo Transaction Approval Request: Send GHS 1,800 to Kwesi. Enter PIN to approve.",
+"delay":3000
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Approve the request because the MTN agent confirmed the reversal process.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Ignore the request and independently contact MTN customer support.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Two-person impersonation + reverse psychology",
+"warningSigns":[
+"The scammer gains trust by telling you not to share your PIN.",
+"The approval request is actually a payment.",
+"Never trust incoming support contacts."
+]
+}
+},
+{
+"id":"bank_fraud_team_otp_trap_002",
+"category":"BANKING_PHISHING",
+"platform":"PHONE_CALL",
+"difficulty":10,
+"phase":6,
+"timeLimit":40,
+"penaltyAmount":8000,
+"isLegit":false,
+"emotion":[
+"fear",
+"authority",
+"urgency"
+],
+"characters":{
+"caller":{
+"name":"Bank Fraud Department",
+"role":"fake_agent",
+"avatar":"🏦"
+},
+"victim":{
+"name":"You",
+"role":"bank_customer",
+"avatar":"👤"
+}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Bank Fraud Department",
+"text":"Good evening. We detected an attempted withdrawal of GHS 8,000 from your account in another region."
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"I am not sure this is the bank. This number is not on your website."
+},
+{
+"id":"m3",
+"sender":"Bank Fraud Department",
+"text":"That is understandable. Our outgoing fraud numbers are different from customer service numbers because criminals monitor the main lines."
+},
+{
+"id":"m4",
+"sender":"Bank Fraud Department",
+"text":"We already blocked the transaction. We only need to verify that you are the account owner."
+},
+{
+"id":"m5",
+"sender":"Bank Fraud Department",
+"text":"A verification code will arrive. Please read it so we can permanently lock the attacker out."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Give the verification code because the bank already blocked the transaction.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"End the call and contact the bank using the number on my card.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Fake fraud prevention call",
+"warningSigns":[
+"Real security teams do not need your OTP.",
+"The caller creates urgency using a fake emergency."
+]
+}
+},
+{
+"id":"legit_bank_card_verification_001",
+"category":"BANKING",
+"platform":"PHONE_CALL",
+"difficulty":8,
+"phase":5,
+"timeLimit":30,
+"isLegit":true,
+"emotion":[
+"confusion",
+"caution"
+],
+"characters":{
+"bank":{
+"name":"Your Bank",
+"role":"official_verification",
+"avatar":"🏦"
+},
+"victim":{
+"name":"You",
+"role":"customer",
+"avatar":"👤"
+}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Your Bank",
+"text":"Good afternoon. We noticed unusual login activity and temporarily restricted online banking access."
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"This number is not saved as my bank contact. How do I know you are real?"
+},
+{
+"id":"m3",
+"sender":"Your Bank",
+"text":"That is a good question. Please do not share your PIN or OTP. Instead, end this call and dial the official number behind your bank card."
+},
+{
+"id":"m4",
+"sender":"Your Bank",
+"text":"Reference number: FRD-48291. Our team will see the report when you call."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Continue the call because they gave a reference number.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"End the call and contact the bank through an official channel.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Legitimate security workflow",
+"warningSigns":[
+"Real organisations allow you to verify independently.",
+"They do not pressure you to continue."
+]
+}
+},
+
+{
+"id":"telecel_sim_upgrade_double_contact_001",
+"category":"SIM_SWAP",
+"platform":"PHONE_CALL",
+"difficulty":10,
+"phase":6,
+"timeLimit":45,
+"penaltyAmount":10000,
+"isLegit":false,
+"emotion":["fear","technical_confusion","trust"],
+"characters":{
+"agent":{"name":"Daniel","role":"fake_telecel_engineer","avatar":"🧑🏾‍💻"},
+"assistant":{"name":"Telecel Security Bot","role":"fake_verification_system","avatar":"🔴"},
+"victim":{"name":"You","role":"subscriber","avatar":"👤"}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Daniel",
+"text":"Good afternoon. We are upgrading SIM security in your area. Some numbers need identity refresh to prevent SIM cloning."
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"This number is not Telecel customer care. I don't trust this call."
+},
+{
+"id":"m3",
+"sender":"Daniel",
+"text":"That is correct. Customer care numbers handle complaints. Technical engineers use temporary lines during network maintenance."
+},
+{
+"id":"m4",
+"sender":"Telecel Security Bot",
+"text":"SECURITY VERIFICATION: Agent Daniel is handling SIM protection request #88391."
+},
+{
+"id":"m5",
+"sender":"Daniel",
+"text":"I don't need your PIN. I only need the code sent to your phone to confirm the SIM owner."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Read the verification code because they only requested ownership confirmation.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"End the call and visit an official Telecel service centre.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"SIM swap + fake verification",
+"warningSigns":[
+"Security codes prove ownership and should not be shared.",
+"Temporary numbers are not a reason to bypass verification."
+]
+}
+},
+
+{
+"id":"smartshop_seller_payment_dispute_001",
+"category":"MARKETPLACE_SCAM",
+"platform":"APP_CHAT",
+"difficulty":9,
+"phase":5,
+"timeLimit":40,
+"penaltyAmount":3500,
+"isLegit":false,
+"emotion":["fairness","pressure","confusion"],
+"characters":{
+"buyer":{"name":"Michael","role":"fake_buyer","avatar":"🛒"},
+"support":{"name":"SmartShop Support","role":"fake_support","avatar":"🛡️"},
+"victim":{"name":"You","role":"seller","avatar":"👤"}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Michael",
+"text":"I paid for your laptop but your account is not releasing the item. I think the payment is stuck."
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"I don't see payment confirmation inside SmartShop."
+},
+{
+"id":"m3",
+"sender":"Michael",
+"text":"I understand. I contacted support because I don't want either of us to lose money."
+},
+{
+"id":"m4",
+"sender":"SmartShop Support",
+"text":"Hello seller. We detected a payment verification issue. To unlock the transaction, confirm your seller PIN."
+},
+{
+"id":"m5",
+"sender":"SmartShop Support",
+"text":"This is only for security verification. We cannot see your PIN."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Provide the seller PIN because official support needs to verify ownership.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Ignore the message and use only support inside the official app.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Buyer + fake support collaboration",
+"warningSigns":[
+"Support should never request passwords or PINs.",
+"Payment status should only be checked inside the platform."
+]
+}
+},
+
+{
+"id":"ai_voice_family_emergency_001",
+"category":"VOICE_CLONING_SCAM",
+"platform":"PHONE_CALL",
+"difficulty":10,
+"phase":6,
+"timeLimit":30,
+"penaltyAmount":5000,
+"isLegit":false,
+"emotion":["panic","love","fear"],
+"characters":{
+"caller":{"name":"Your Daughter","role":"ai_voice_clone","avatar":"📞"},
+"second":{"name":"Hospital Staff","role":"fake_confirmation","avatar":"🏥"},
+"victim":{"name":"You","role":"parent","avatar":"👤"}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Your Daughter",
+"text":"Mum, I had an accident. My phone is damaged. Please don't tell anyone, I need help quickly."
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"Your voice sounds strange. Are you really my daughter?"
+},
+{
+"id":"m3",
+"sender":"Your Daughter",
+"text":"The accident affected my throat. I am using someone else's phone."
+},
+{
+"id":"m4",
+"sender":"Hospital Staff",
+"text":"Hello, we are assisting your daughter. She needs emergency payment for treatment."
+},
+{
+"id":"m5",
+"sender":"Hospital Staff",
+"text":"You can send payment now while we prepare documents."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Send the money because the voice sounds like my daughter.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Call my daughter's saved number or another family member.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"AI voice impersonation",
+"warningSigns":[
+"Voice alone is not proof of identity.",
+"Verify through another channel."
+]
+}
+},
+
+{
+"id":"linkedin_recruiter_security_check_001",
+"category":"JOB_SCAM",
+"platform":"LINKEDIN",
+"difficulty":9,
+"phase":5,
+"timeLimit":35,
+"penaltyAmount":1200,
+"isLegit":false,
+"emotion":["career_pressure","excitement"],
+"characters":{
+"recruiter":{"name":"Ama Mensah HR","role":"fake_recruiter","avatar":"👩🏾‍💼"},
+"victim":{"name":"You","role":"developer","avatar":"👤"}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Ama Mensah HR",
+"text":"Your profile matches our Software Engineer opening. We liked your GitHub projects."
+},
+{
+"id":"m2",
+"sender":"You",
+"text":"I don't see this position on your company website."
+},
+{
+"id":"m3",
+"sender":"Ama Mensah HR",
+"text":"Correct. It is a confidential replacement role. Public posting would attract too many applicants."
+},
+{
+"id":"m4",
+"sender":"Ama Mensah HR",
+"text":"Before interview, our security team requires identity verification through this candidate portal."
+},
+{
+"id":"m5",
+"sender":"Ama Mensah HR",
+"text":"Upload your ID and pay a refundable equipment insurance fee."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Complete verification because the recruiter already knows my profile.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Verify the recruiter through the company's official careers page.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Targeted recruitment phishing",
+"warningSigns":[
+"Knowing your profile does not prove identity.",
+"Job applicants should not pay fees."
+]
+}
+},
+
+{
+"id":"bank_card_expiry_scam_001",
+"category":"BANKING_PHISHING",
+"platform":"SMS_CALL",
+"difficulty":9,
+"phase":5,
+"timeLimit":35,
+"penaltyAmount":7000,
+"isLegit":false,
+"emotion":["fear","urgency"],
+"characters":{
+"sms":{"name":"Bank Alert","role":"spoofed_sms","avatar":"🏦"},
+"agent":{"name":"Bank Officer","role":"fake_agent","avatar":"👔"}
+},
+"conversation":[
+{
+"id":"m1",
+"sender":"Bank Alert",
+"text":"Your ATM card will expire today. Update your details to avoid account restrictions."
+},
+{
+"id":"m2",
+"sender":"Bank Officer",
+"text":"I understand your concern. You are right to be careful. I can confirm the last four digits of your card."
+},
+{
+"id":"m3",
+"sender":"Bank Officer",
+"text":"We only need the replacement verification process completed."
+},
+{
+"id":"m4",
+"sender":"Bank Officer",
+"text":"Please confirm the OTP sent to your phone."
+}
+],
+"choices":[
+{
+"id":"c1",
+"text":"Give the OTP because they confirmed my card details.",
+"resultKey":"LOSS"
+},
+{
+"id":"c2",
+"text":"Contact the bank using the number on my card.",
+"resultKey":"SAFE"
+}
+],
+"lesson":{
+"technique":"Information confirmation trap",
+"warningSigns":[
+"Knowing partial information does not prove identity.",
+"OTP confirms transactions."
+]
+}
+}
+]}
+  

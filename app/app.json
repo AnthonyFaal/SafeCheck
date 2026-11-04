@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "SafeCheck",
+    "slug": "scam-awareness",
+    "version": "1.0.0",
+    "scheme": "safecheck",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.faal.safecheck"
+    },
+    "android": {
+      "package": "com.faal.safecheck",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "sounds": [
+            "./assets/sounds/notification.wav"
+          ]
+        }
+      ],
+      [
+        "expo-share-intent",
+        {
+          "iosShareExtensionName": "SafeCheck",
+          "iosActivationRules": {
+            "NSExtensionActivationSupportsText": true,
+            "NSExtensionActivationSupportsWebURLWithMaxCount": 1,
+            "NSExtensionActivationSupportsWebPageWithMaxCount": 1
+          },
+          "androidIntentFilters": [
+            "text/*"
+          ]
+        }
+      ],
+      "expo-sqlite",
+      "expo-status-bar",
+      "expo-secure-store",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2a22e570-2e7e-42c3-9bb3-9376f3defd5d"
+      }
+    }
+  }
+}

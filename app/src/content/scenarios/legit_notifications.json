@@ -1,0 +1,1072 @@
+{
+  "templates": [
+    {
+      "id": "bank_biometric_phishing_001",
+      "category": "BANK_NOTIFICATION",
+      "platform": "SMS",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 20,
+      "penaltyAmount": 3000,
+      "isLegit": false,
+      "emotion": ["panic", "authority", "urgency"],
+      "characters": {
+        "bank": { "name": "ECO-BANK", "role": "spoofed_bank", "avatar": "🏦" },
+        "customer": { "name": "You", "role": "account_holder", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "ECO-BANK",
+          "text": "Dear Customer, your Bank-to-MoMo service has been SUSPENDED due to a failed Biometric/GhanaCard sync.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "ECO-BANK",
+          "text": "Please update your records immediately via our secure portal to avoid total account freeze: https://ecobank-gh.update-portal.com",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "ECO-BANK",
+          "text": "Failure to complete this within 24 hours will result in a GHS 50 penalty and account closure. Ref: BO-992",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "ECO-BANK",
+          "text": "Final Notice: Click the link to verify your GhanaCard PIN now.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and enter your banking details to prevent the account freeze.",
+          "resultKey": "LOSS",
+          "topicKey": "BANK_NOTIFICATION"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the link. Notice the hyphen in 'ECO-BANK' and call your branch directly.",
+          "resultKey": "SAFE",
+          "topicKey": "BANK_NOTIFICATION"
+        }
+      ],
+      "lesson": {
+        "technique": "Spoofed SMS Sender ID + Phishing Link",
+        "warningSigns": [
+          "Scammers can easily spoof Sender IDs to make messages look like they came from your bank.",
+          "Look at the URL closely: real banks use short, official domains (e.g., ecobank.com), not long, hyphenated 'update-portal' links.",
+          "Banks will never ask you to verify your GhanaCard PIN online."
+        ],
+        "topicKey": "BANK_NOTIFICATION"
+      }
+    },
+    {
+      "id": "telecom_call_forwarding_002",
+      "category": "TELECOM_ALERT",
+      "platform": "CALL_SIMULATION",
+      "difficulty": 10,
+      "phase": 5,
+      "timeLimit": 25,
+      "penaltyAmount": 5000,
+      "isLegit": false,
+      "emotion": ["trust", "confusion", "compliance"],
+      "characters": {
+        "network": { "name": "MTN HQ - Mr. Osei", "role": "fake_telecom_staff", "avatar": "🎧" },
+        "subscriber": { "name": "You", "role": "subscriber", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "Hello, am I speaking with the owner of this number? I am calling from MTN Ridge Headquarters regarding the nationwide 5G network migration.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "Your SIM card is currently struggling to connect to the new broadband nodes, which is why your data finishes quickly. I want to help you refresh the line.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "I am not asking for your MoMo PIN. Please open your phone dialer and type this network refresh code: *21*054XXXXXXX# and press send.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "Please dial it quickly while I am on the line so the system can capture your SIM signature.",
+          "delay": 5000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Dial the code since he didn't ask for money or your MoMo PIN.",
+          "resultKey": "LOSS",
+          "topicKey": "TELECOM_ALERT"
+        },
+        {
+          "id": "c2",
+          "text": "Hang up. Dialing that code forwards all your calls/SMS to the scammer.",
+          "resultKey": "SAFE",
+          "topicKey": "TELECOM_ALERT"
+        }
+      ],
+      "lesson": {
+        "technique": "MMI Code Call Forwarding Hijack",
+        "warningSigns": [
+          "The code *21* is a universal command used to forward calls. If you dial it with their number, they receive your calls and OTPs.",
+          "Scammers use the 'I am not asking for your PIN' line to lower your defenses.",
+          "Network providers upgrade towers remotely; they never ask customers to dial complex codes to 'refresh' lines."
+        ],
+        "topicKey": "TELECOM_ALERT"
+      }
+    },
+    {
+      "id": "delivery_customs_phishing_003",
+      "category": "DELIVERY_NOTICE",
+      "platform": "SMS",
+      "difficulty": 7,
+      "phase": 3,
+      "timeLimit": 15,
+      "penaltyAmount": 45,
+      "isLegit": false,
+      "emotion": ["curiosity", "anticipation"],
+      "characters": {
+        "courier": { "name": "DHL-Express", "role": "fake_courier", "avatar": "📦" },
+        "customer": { "name": "You", "role": "recipient", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "DHL-Express",
+          "text": "Your parcel #99482 from the UK arrived at Kotoka International Airport sorting center.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "DHL-Express",
+          "text": "Delivery is on hold due to an unpaid terminal handling fee of GHS 45.00.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "DHL-Express",
+          "text": "Please settle this fee online to schedule home delivery: https://dhl-gh-clearance.net/pay",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "DHL-Express",
+          "text": "If not paid by 4 PM, the parcel will be returned to the sender.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and pay the GHS 45 with your debit card to get the package.",
+          "resultKey": "LOSS",
+          "topicKey": "DELIVERY_NOTICE"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore it. Legitimate couriers do not ask for clearance fees via random SMS links.",
+          "resultKey": "SAFE",
+          "topicKey": "DELIVERY_NOTICE"
+        }
+      ],
+      "lesson": {
+        "technique": "Smishing (SMS Phishing) + Micro-Payment Bait",
+        "warningSigns": [
+          "The fee is deliberately small (GHS 45) so victims pay without overthinking.",
+          "Clicking the link usually takes you to a fake payment gateway designed to steal your Visa/Mastercard details.",
+          "Scammers cast a wide net hoping someone actually is expecting a package."
+        ],
+        "topicKey": "DELIVERY_NOTICE"
+      }
+    },
+    {
+      "id": "momo_reversal_prompt_004",
+      "category": "MOBILE_MONEY",
+      "platform": "WHATSAPP",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 20,
+      "penaltyAmount": 1200,
+      "isLegit": false,
+      "emotion": ["panic", "relief", "urgency"],
+      "characters": {
+        "sender": { "name": "MobileMoney Agent", "role": "scammer", "avatar": "⚠️" },
+        "customer": { "name": "You", "role": "subscriber", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MobileMoney Agent",
+          "text": "Boss please I just sent GHS 1,200 to your number right now. It was for a merchant till but I typed your number by mistake.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "MobileMoney Agent",
+          "text": "I have called MTN to reverse it. They said they will send a prompt to your phone to authorize the reversal back to my merchant till.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "SYSTEM POP-UP (Simulation)",
+          "text": "Authorize payment of GHS 1,200.00 to SAKAWA VENTURES? Enter PIN to confirm.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "MobileMoney Agent",
+          "text": "Please the prompt has appeared on your screen right? Just enter your PIN to cancel the transaction for me. God bless you.",
+          "delay": 4500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Enter your PIN on the pop-up to 'cancel' the transaction and return his money.",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Decline the pop-up. The prompt is actually a request to DEBIT your account.",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Merchant Debit Request Manipulation",
+        "warningSigns": [
+          "The scammer uses a 'Debit Request' (which pops up asking for your PIN) and lies that it's a 'Reversal Authorization'.",
+          "Entering your PIN on a prompt ALWAYS means money is leaving your account, never entering or reversing.",
+          "Never approve a prompt that you did not initiate yourself."
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "ug_student_portal_hack_005",
+      "category": "EDUCATION",
+      "platform": "EMAIL",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 30,
+      "penaltyAmount": 2000,
+      "isLegit": false,
+      "emotion": ["fear", "responsibility", "urgency"],
+      "characters": {
+        "school": { "name": "UG Academic Affairs", "role": "spoofed_email", "avatar": "🎓" },
+        "student": { "name": "You", "role": "student", "avatar": "🧑‍🎓" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "UG Academic Affairs",
+          "text": "URGENT: Discrepancy in Academic Facility User Fee (AFUF) Payment.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "UG Academic Affairs",
+          "text": "Dear Student, our records show your recent fee payment was flagged by the bank. Your registration status for the semester is now PENDING DEFERRAL.",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "UG Academic Affairs",
+          "text": "Log in to the Student Integrated Information System (SIIS) immediately to re-upload your bank receipt and verify your credentials: https://ug-edu.secure-student-portal.com/login",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "UG Academic Affairs",
+          "text": "Portal closes at 5:00 PM today.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and log in with your Student ID and PIN to upload the receipt.",
+          "resultKey": "LOSS",
+          "topicKey": "PHISHING"
+        },
+        {
+          "id": "c2",
+          "text": "Do not click the link. Open a new tab, type the official university portal URL, and check your status.",
+          "resultKey": "SAFE",
+          "topicKey": "PHISHING"
+        }
+      ],
+      "lesson": {
+        "technique": "Targeted Spear-Phishing + Academic Blackmail",
+        "warningSigns": [
+          "The email threatens 'deferral' to induce severe panic.",
+          "The link is a typosquatting domain (secure-student-portal.com) designed to harvest your Student ID and PIN.",
+          "Once they have your portal login, they can hijack your account to scam your parents for 'emergency fees'."
+        ],
+        "topicKey": "PHISHING"
+      }
+    },
+    {
+      "id": "telegram_ponzi_group_006",
+      "category": "INVESTMENT_SCAM",
+      "platform": "TELEGRAM",
+      "difficulty": 7,
+      "phase": 3,
+      "timeLimit": 45,
+      "penaltyAmount": 1000,
+      "isLegit": false,
+      "emotion": ["greed", "social_proof", "FOMO"],
+      "characters": {
+        "admin": { "name": "Ghana Wealth Matrix (Admin)", "role": "scammer", "avatar": "📈" },
+        "member": { "name": "Kwame_Crypto", "role": "fake_testimony", "avatar": "👨" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Ghana Wealth Matrix (Admin)",
+          "text": "Welcome to the VIP Earnings Group. We trade forex binary options. Deposit GHS 500, receive GHS 1,500 in 45 minutes guaranteed.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Kwame_Crypto",
+          "text": "[Image: Fake MoMo Alert for GHS 1,500] Boss it is real! I just cashed out right now. God bless you Admin!",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Ghana Wealth Matrix (Admin)",
+          "text": "Congratulations Kwame. We have only 2 slots left for the 2:00 PM trading session.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Ghana Wealth Matrix (Admin)",
+          "text": "Direct message me for the Merchant MoMo number to make your deposit now before the window closes.",
+          "delay": 3500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Message the admin and send GHS 500 to triple your money quickly.",
+          "resultKey": "LOSS",
+          "topicKey": "INVESTMENT_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Leave and report the group. Any 'investment' offering 200% returns in 45 minutes is a Ponzi scheme.",
+          "resultKey": "SAFE",
+          "topicKey": "INVESTMENT_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Telegram 'Sika Duro' / Crypto Ponzi",
+        "warningSigns": [
+          "Guaranteed high returns in impossible timeframes (45 minutes) violate basic financial logic.",
+          "The 'Kwame_Crypto' account is just the scammer using a secondary number to create fake social proof.",
+          "Artificial scarcity ('only 2 slots left') forces victims to act without thinking."
+        ],
+        "topicKey": "INVESTMENT_SCAM"
+      }
+    },
+    {
+      "id": "bank_biometric_phishing_001",
+      "category": "BANK_NOTIFICATION",
+      "platform": "SMS",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 20,
+      "penaltyAmount": 3000,
+      "isLegit": false,
+      "emotion": ["panic", "authority", "urgency"],
+      "characters": {
+        "bank": { "name": "ECO-BANK", "role": "spoofed_bank", "avatar": "🏦" },
+        "customer": { "name": "You", "role": "account_holder", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "ECO-BANK",
+          "text": "Dear Customer, your Bank-to-MoMo service has been SUSPENDED due to a failed Biometric/GhanaCard sync.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "ECO-BANK",
+          "text": "Please update your records immediately via our secure portal to avoid total account freeze: https://ecobank-gh.update-portal.com",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "ECO-BANK",
+          "text": "Failure to complete this within 24 hours will result in a GHS 50 penalty and account closure. Ref: BO-992",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "ECO-BANK",
+          "text": "Final Notice: Click the link to verify your GhanaCard PIN now.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and enter your banking details to prevent the account freeze.",
+          "resultKey": "LOSS",
+          "topicKey": "BANK_NOTIFICATION"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the link. Notice the hyphen in 'ECO-BANK' and call your branch directly.",
+          "resultKey": "SAFE",
+          "topicKey": "BANK_NOTIFICATION"
+        }
+      ],
+      "lesson": {
+        "technique": "Spoofed SMS Sender ID + Phishing Link",
+        "warningSigns": [
+          "Scammers can easily spoof Sender IDs to make messages look like they came from your bank.",
+          "Look at the URL closely: real banks use short, official domains (e.g., ecobank.com), not long, hyphenated 'update-portal' links.",
+          "Banks will never ask you to verify your GhanaCard PIN online."
+        ],
+        "topicKey": "BANK_NOTIFICATION"
+      }
+    },
+    {
+      "id": "telecom_call_forwarding_002",
+      "category": "TELECOM_ALERT",
+      "platform": "CALL_SIMULATION",
+      "difficulty": 10,
+      "phase": 5,
+      "timeLimit": 25,
+      "penaltyAmount": 5000,
+      "isLegit": false,
+      "emotion": ["trust", "confusion", "compliance"],
+      "characters": {
+        "network": { "name": "MTN HQ - Mr. Osei", "role": "fake_telecom_staff", "avatar": "🎧" },
+        "subscriber": { "name": "You", "role": "subscriber", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "Hello, am I speaking with the owner of this number? I am calling from MTN Ridge Headquarters regarding the nationwide 5G network migration.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "Your SIM card is currently struggling to connect to the new broadband nodes, which is why your data finishes quickly. I want to help you refresh the line.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "I am not asking for your MoMo PIN. Please open your phone dialer and type this network refresh code: *21*054XXXXXXX# and press send.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "MTN HQ - Mr. Osei",
+          "text": "Please dial it quickly while I am on the line so the system can capture your SIM signature.",
+          "delay": 5000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Dial the code since he didn't ask for money or your MoMo PIN.",
+          "resultKey": "LOSS",
+          "topicKey": "TELECOM_ALERT"
+        },
+        {
+          "id": "c2",
+          "text": "Hang up. Dialing that code forwards all your calls/SMS to the scammer.",
+          "resultKey": "SAFE",
+          "topicKey": "TELECOM_ALERT"
+        }
+      ],
+      "lesson": {
+        "technique": "MMI Code Call Forwarding Hijack",
+        "warningSigns": [
+          "The code *21* is a universal command used to forward calls. If you dial it with their number, they receive your calls and OTPs.",
+          "Scammers use the 'I am not asking for your PIN' line to lower your defenses.",
+          "Network providers upgrade towers remotely; they never ask customers to dial complex codes to 'refresh' lines."
+        ],
+        "topicKey": "TELECOM_ALERT"
+      }
+    },
+    {
+      "id": "delivery_customs_phishing_003",
+      "category": "DELIVERY_NOTICE",
+      "platform": "SMS",
+      "difficulty": 7,
+      "phase": 3,
+      "timeLimit": 15,
+      "penaltyAmount": 45,
+      "isLegit": false,
+      "emotion": ["curiosity", "anticipation"],
+      "characters": {
+        "courier": { "name": "DHL-Express", "role": "fake_courier", "avatar": "📦" },
+        "customer": { "name": "You", "role": "recipient", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "DHL-Express",
+          "text": "Your parcel #99482 from the UK arrived at Kotoka International Airport sorting center.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "DHL-Express",
+          "text": "Delivery is on hold due to an unpaid terminal handling fee of GHS 45.00.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "DHL-Express",
+          "text": "Please settle this fee online to schedule home delivery: https://dhl-gh-clearance.net/pay",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "DHL-Express",
+          "text": "If not paid by 4 PM, the parcel will be returned to the sender.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and pay the GHS 45 with your debit card to get the package.",
+          "resultKey": "LOSS",
+          "topicKey": "DELIVERY_NOTICE"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore it. Legitimate couriers do not ask for clearance fees via random SMS links.",
+          "resultKey": "SAFE",
+          "topicKey": "DELIVERY_NOTICE"
+        }
+      ],
+      "lesson": {
+        "technique": "Smishing (SMS Phishing) + Micro-Payment Bait",
+        "warningSigns": [
+          "The fee is deliberately small (GHS 45) so victims pay without overthinking.",
+          "Clicking the link usually takes you to a fake payment gateway designed to steal your Visa/Mastercard details.",
+          "Scammers cast a wide net hoping someone actually is expecting a package."
+        ],
+        "topicKey": "DELIVERY_NOTICE"
+      }
+    },
+    {
+      "id": "momo_reversal_prompt_004",
+      "category": "MOBILE_MONEY",
+      "platform": "WHATSAPP",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 20,
+      "penaltyAmount": 1200,
+      "isLegit": false,
+      "emotion": ["panic", "relief", "urgency"],
+      "characters": {
+        "sender": { "name": "MobileMoney Agent", "role": "scammer", "avatar": "⚠️" },
+        "customer": { "name": "You", "role": "subscriber", "avatar": "👤" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MobileMoney Agent",
+          "text": "Boss please I just sent GHS 1,200 to your number right now. It was for a merchant till but I typed your number by mistake.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "MobileMoney Agent",
+          "text": "I have called MTN to reverse it. They said they will send a prompt to your phone to authorize the reversal back to my merchant till.",
+          "delay": 3500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "SYSTEM POP-UP (Simulation)",
+          "text": "Authorize payment of GHS 1,200.00 to SAKAWA VENTURES? Enter PIN to confirm.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "MobileMoney Agent",
+          "text": "Please the prompt has appeared on your screen right? Just enter your PIN to cancel the transaction for me. God bless you.",
+          "delay": 4500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Enter your PIN on the pop-up to 'cancel' the transaction and return his money.",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Decline the pop-up. The prompt is actually a request to DEBIT your account.",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Merchant Debit Request Manipulation",
+        "warningSigns": [
+          "The scammer uses a 'Debit Request' (which pops up asking for your PIN) and lies that it's a 'Reversal Authorization'.",
+          "Entering your PIN on a prompt ALWAYS means money is leaving your account, never entering or reversing.",
+          "Never approve a prompt that you did not initiate yourself."
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "ug_student_portal_hack_005",
+      "category": "EDUCATION",
+      "platform": "EMAIL",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 30,
+      "penaltyAmount": 2000,
+      "isLegit": false,
+      "emotion": ["fear", "responsibility", "urgency"],
+      "characters": {
+        "school": { "name": "UG Academic Affairs", "role": "spoofed_email", "avatar": "🎓" },
+        "student": { "name": "You", "role": "student", "avatar": "🧑‍🎓" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "UG Academic Affairs",
+          "text": "URGENT: Discrepancy in Academic Facility User Fee (AFUF) Payment.",
+          "delay": 1000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "UG Academic Affairs",
+          "text": "Dear Student, our records show your recent fee payment was flagged by the bank. Your registration status for the semester is now PENDING DEFERRAL.",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "UG Academic Affairs",
+          "text": "Log in to the Student Integrated Information System (SIIS) immediately to re-upload your bank receipt and verify your credentials: https://ug-edu.secure-student-portal.com/login",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "UG Academic Affairs",
+          "text": "Portal closes at 5:00 PM today.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and log in with your Student ID and PIN to upload the receipt.",
+          "resultKey": "LOSS",
+          "topicKey": "PHISHING"
+        },
+        {
+          "id": "c2",
+          "text": "Do not click the link. Open a new tab, type the official university portal URL, and check your status.",
+          "resultKey": "SAFE",
+          "topicKey": "PHISHING"
+        }
+      ],
+      "lesson": {
+        "technique": "Targeted Spear-Phishing + Academic Blackmail",
+        "warningSigns": [
+          "The email threatens 'deferral' to induce severe panic.",
+          "The link is a typosquatting domain (secure-student-portal.com) designed to harvest your Student ID and PIN.",
+          "Once they have your portal login, they can hijack your account to scam your parents for 'emergency fees'."
+        ],
+        "topicKey": "PHISHING"
+      }
+    },
+    {
+      "id": "telegram_ponzi_group_006",
+      "category": "INVESTMENT_SCAM",
+      "platform": "TELEGRAM",
+      "difficulty": 7,
+      "phase": 3,
+      "timeLimit": 45,
+      "penaltyAmount": 1000,
+      "isLegit": false,
+      "emotion": ["greed", "social_proof", "FOMO"],
+      "characters": {
+        "admin": { "name": "Ghana Wealth Matrix (Admin)", "role": "scammer", "avatar": "📈" },
+        "member": { "name": "Kwame_Crypto", "role": "fake_testimony", "avatar": "👨" }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Ghana Wealth Matrix (Admin)",
+          "text": "Welcome to the VIP Earnings Group. We trade forex binary options. Deposit GHS 500, receive GHS 1,500 in 45 minutes guaranteed.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Kwame_Crypto",
+          "text": "[Image: Fake MoMo Alert for GHS 1,500] Boss it is real! I just cashed out right now. God bless you Admin!",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Ghana Wealth Matrix (Admin)",
+          "text": "Congratulations Kwame. We have only 2 slots left for the 2:00 PM trading session.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Ghana Wealth Matrix (Admin)",
+          "text": "Direct message me for the Merchant MoMo number to make your deposit now before the window closes.",
+          "delay": 3500,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Message the admin and send GHS 500 to triple your money quickly.",
+          "resultKey": "LOSS",
+          "topicKey": "INVESTMENT_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Leave and report the group. Any 'investment' offering 200% returns in 45 minutes is a Ponzi scheme.",
+          "resultKey": "SAFE",
+          "topicKey": "INVESTMENT_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Telegram 'Sika Duro' / Crypto Ponzi",
+        "warningSigns": [
+          "Guaranteed high returns in impossible timeframes (45 minutes) violate basic financial logic.",
+          "The 'Kwame_Crypto' account is just the scammer using a secondary number to create fake social proof.",
+          "Artificial scarcity ('only 2 slots left') forces victims to act without thinking."
+        ],
+        "topicKey": "INVESTMENT_SCAM"
+      }
+    },
+    {
+      "id": "momo_fake_refund_007",
+      "category": "MOBILE_MONEY",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 800,
+      "isLegit": false,
+      "emotion": ["confusion", "trust", "urgency"],
+      "characters": {
+        "sender": {
+          "name": "MoMo Support",
+          "role": "fake_customer_service",
+          "avatar": "📲"
+        },
+        "customer": {
+          "name": "You",
+          "role": "mobile_money_user",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "MoMo Support",
+          "text": "Hello customer, we noticed your recent MoMo transaction was charged twice due to a system error."
+        },
+        {
+          "id": "m2",
+          "sender": "MoMo Support",
+          "text": "We need to verify your account before processing your refund of GHS 800."
+        },
+        {
+          "id": "m3",
+          "sender": "MoMo Support",
+          "text": "Please provide your MoMo PIN and the OTP sent to your phone to confirm ownership."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the OTP and PIN so they can process the refund.",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT"
+        },
+        {
+          "id": "c2",
+          "text": "Refuse. Support agents never need your PIN or OTP.",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake Customer Support + OTP Theft",
+        "warningSigns": [
+          "Customer service will never request your PIN.",
+          "Refunds do not require OTP confirmation from the customer.",
+          "Scammers create fake support accounts to steal account access."
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "job_offer_registration_fee_008",
+      "category": "JOB_SCAM",
+      "platform": "EMAIL",
+      "difficulty": 7,
+      "phase": 3,
+      "timeLimit": 30,
+      "penaltyAmount": 350,
+      "isLegit": false,
+      "emotion": ["excitement", "hope", "urgency"],
+      "characters": {
+        "recruiter": {
+          "name": "Global Tech Careers",
+          "role": "fake_recruiter",
+          "avatar": "💼"
+        },
+        "candidate": {
+          "name": "You",
+          "role": "job_seeker",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Global Tech Careers",
+          "text": "Congratulations! Your CV has been selected for our remote software engineer position."
+        },
+        {
+          "id": "m2",
+          "sender": "Global Tech Careers",
+          "text": "You have passed our first screening. We only need a small GHS 350 onboarding and background check fee."
+        },
+        {
+          "id": "m3",
+          "sender": "Global Tech Careers",
+          "text": "Pay today to reserve your position before another candidate takes your slot."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the fee because the salary opportunity looks excellent.",
+          "resultKey": "LOSS",
+          "topicKey": "JOB_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Verify the company independently. Legitimate employers do not charge hiring fees.",
+          "resultKey": "SAFE",
+          "topicKey": "JOB_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Employment Scam + Advance Fee Fraud",
+        "warningSigns": [
+          "Real employers pay recruitment costs; they do not charge candidates.",
+          "Urgent payment requests before interviews are suspicious.",
+          "Fake recruiters often use attractive salaries to lower skepticism."
+        ],
+        "topicKey": "JOB_SCAM"
+      }
+    },
+    {
+      "id": "facebook_account_locked_009",
+      "category": "SOCIAL_MEDIA_PHISHING",
+      "platform": "FACEBOOK",
+      "difficulty": 8,
+      "phase": 4,
+      "timeLimit": 20,
+      "penaltyAmount": 0,
+      "isLegit": false,
+      "emotion": ["fear", "panic", "urgency"],
+      "characters": {
+        "attacker": {
+          "name": "Facebook Security Team",
+          "role": "fake_security",
+          "avatar": "🔒"
+        },
+        "user": {
+          "name": "You",
+          "role": "account_owner",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Facebook Security Team",
+          "text": "Your account has violated our community standards and will be permanently deleted."
+        },
+        {
+          "id": "m2",
+          "sender": "Facebook Security Team",
+          "text": "You have 30 minutes to appeal this decision."
+        },
+        {
+          "id": "m3",
+          "sender": "Facebook Security Team",
+          "text": "Submit your password here to confirm ownership: facebook-security-review.net"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Enter your password immediately to save your account.",
+          "resultKey": "LOSS",
+          "topicKey": "SOCIAL_MEDIA_PHISHING"
+        },
+        {
+          "id": "c2",
+          "text": "Open Facebook directly through the app and check notifications.",
+          "resultKey": "SAFE",
+          "topicKey": "SOCIAL_MEDIA_PHISHING"
+        }
+      ],
+      "lesson": {
+        "technique": "Account Takeover Phishing",
+        "warningSigns": [
+          "Social platforms do not request passwords through messages.",
+          "Fake deadlines create panic and prevent careful thinking.",
+          "Always verify warnings inside the official app."
+        ],
+        "topicKey": "SOCIAL_MEDIA_PHISHING"
+      }
+    },
+    {
+      "id": "fake_bank_card_upgrade_010",
+      "category": "BANK_NOTIFICATION",
+      "platform": "PHONE_CALL",
+      "difficulty": 9,
+      "phase": 5,
+      "timeLimit": 30,
+      "penaltyAmount": 5000,
+      "isLegit": false,
+      "emotion": ["authority", "trust", "confusion"],
+      "characters": {
+        "caller": {
+          "name": "Bank Verification Officer",
+          "role": "fake_bank_employee",
+          "avatar": "🏦"
+        },
+        "victim": {
+          "name": "You",
+          "role": "bank_customer",
+          "avatar": "👤"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Bank Verification Officer",
+          "text": "Good afternoon. We are upgrading all ATM cards to a new security chip."
+        },
+        {
+          "id": "m2",
+          "sender": "Bank Verification Officer",
+          "text": "To activate your replacement card, please confirm your card number and expiry date."
+        },
+        {
+          "id": "m3",
+          "sender": "Bank Verification Officer",
+          "text": "You will receive an OTP. Read it to me so I can complete activation."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Provide the card details and OTP.",
+          "resultKey": "LOSS",
+          "topicKey": "BANK_NOTIFICATION"
+        },
+        {
+          "id": "c2",
+          "text": "End the call and contact the bank using the official number.",
+          "resultKey": "SAFE",
+          "topicKey": "BANK_NOTIFICATION"
+        }
+      ],
+      "lesson": {
+        "technique": "Bank Impersonation + Card Verification Fraud",
+        "warningSigns": [
+          "Banks already know your card details.",
+          "OTP codes should never be shared.",
+          "Caller ID can be spoofed."
+        ],
+        "topicKey": "BANK_NOTIFICATION"
+      }
+    }
+  ]
+}

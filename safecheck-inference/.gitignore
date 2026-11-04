@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+venv/
+env/
+models/primary_deberta/*
+!models/primary_deberta/.gitkeep
+models/behavior_deberta/*
+!models/behavior_deberta/.gitkeep
+models/character_expert/*
+!models/character_expert/.gitkeep
+models/ensemble_meta_calibrator.joblib
+*.zip

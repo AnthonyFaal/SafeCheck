@@ -1,0 +1,17 @@
+CREATE TYPE "LiveSessionStatus" AS ENUM ('LOBBY', 'LIVE', 'FINISHED');
+CREATE TABLE "DailySafetyAdvice" ("id" TEXT NOT NULL, "title" TEXT NOT NULL, "body" TEXT NOT NULL, "action" TEXT, "activeFrom" DATE NOT NULL, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "DailySafetyAdvice_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "DailySafetyAdvice_activeFrom_key" ON "DailySafetyAdvice"("activeFrom");
+CREATE TABLE "LiveSession" ("id" TEXT NOT NULL, "code" TEXT NOT NULL, "title" TEXT NOT NULL, "hostId" TEXT NOT NULL, "status" "LiveSessionStatus" NOT NULL DEFAULT 'LOBBY', "questionSeconds" INTEGER NOT NULL DEFAULT 30, "currentQuestion" INTEGER NOT NULL DEFAULT 0, "questionStartedAt" TIMESTAMP(3), "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "finishedAt" TIMESTAMP(3), CONSTRAINT "LiveSession_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "LiveSession_code_key" ON "LiveSession"("code"); CREATE INDEX "LiveSession_status_createdAt_idx" ON "LiveSession"("status", "createdAt");
+CREATE TABLE "LiveSessionQuestion" ("id" TEXT NOT NULL, "sessionId" TEXT NOT NULL, "position" INTEGER NOT NULL, "prompt" TEXT NOT NULL, "choices" JSONB NOT NULL, "correctAnswer" TEXT NOT NULL, CONSTRAINT "LiveSessionQuestion_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "LiveSessionQuestion_sessionId_position_key" ON "LiveSessionQuestion"("sessionId", "position");
+CREATE TABLE "LiveSessionPlayer" ("id" TEXT NOT NULL, "sessionId" TEXT NOT NULL, "userId" TEXT NOT NULL, "score" INTEGER NOT NULL DEFAULT 0, "joinedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "LiveSessionPlayer_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "LiveSessionPlayer_sessionId_userId_key" ON "LiveSessionPlayer"("sessionId", "userId"); CREATE INDEX "LiveSessionPlayer_sessionId_score_idx" ON "LiveSessionPlayer"("sessionId", "score");
+CREATE TABLE "LiveSessionAnswer" ("id" TEXT NOT NULL, "playerId" TEXT NOT NULL, "questionId" TEXT NOT NULL, "answer" TEXT NOT NULL, "correct" BOOLEAN NOT NULL, "points" INTEGER NOT NULL, "answeredAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "LiveSessionAnswer_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "LiveSessionAnswer_playerId_questionId_key" ON "LiveSessionAnswer"("playerId", "questionId");
+ALTER TABLE "LiveSession" ADD CONSTRAINT "LiveSession_hostId_fkey" FOREIGN KEY ("hostId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "LiveSessionQuestion" ADD CONSTRAINT "LiveSessionQuestion_sessionId_fkey" FOREIGN KEY ("sessionId") REFERENCES "LiveSession"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "LiveSessionPlayer" ADD CONSTRAINT "LiveSessionPlayer_sessionId_fkey" FOREIGN KEY ("sessionId") REFERENCES "LiveSession"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "LiveSessionPlayer" ADD CONSTRAINT "LiveSessionPlayer_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "LiveSessionAnswer" ADD CONSTRAINT "LiveSessionAnswer_playerId_fkey" FOREIGN KEY ("playerId") REFERENCES "LiveSessionPlayer"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "LiveSessionAnswer" ADD CONSTRAINT "LiveSessionAnswer_questionId_fkey" FOREIGN KEY ("questionId") REFERENCES "LiveSessionQuestion"("id") ON DELETE CASCADE ON UPDATE CASCADE;

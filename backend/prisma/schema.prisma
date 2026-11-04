@@ -1,0 +1,352 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+enum ScanType {
+  MESSAGE
+  URL
+  SCREENSHOT
+  JOB_OFFER
+}
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+enum ScenarioStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+enum MembershipRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+enum SubscriptionPlan {
+  FREE
+  PREMIUM
+}
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELED
+  PAST_DUE
+  EXPIRED
+}
+enum LiveSessionStatus {
+  SCHEDULED
+  LOBBY
+  LIVE
+  FINISHED
+  CANCELED
+}
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+model User {
+  id String @id @default(uuid())
+  email String @unique
+  passwordHash String
+  username String @unique
+  safetyScore Int @default(50)
+  xp Int @default(0)
+  coins Int @default(0)
+  role UserRole @default(USER)
+  deletedAt DateTime?
+  emailVerifiedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile Profile?
+  sessions Session[]
+  attempts ScenarioAttempt[]
+  scans AiScan[]
+  dailyChallenges DailyChallenge[]
+  achievements UserAchievement[]
+  groups GroupMember[]
+  notificationPreferences NotificationPreference?
+  subscription Subscription?
+  pushTokens PushToken[]
+  notificationLogs NotificationLog[]
+  hostedSessions LiveSession[] @relation("SessionHost")
+  sessionPlayers LiveSessionPlayer[]
+  emailOtps EmailOtp[]
+  @@index([deletedAt])
+}
+model EmailOtp {
+  id String @id @default(uuid())
+  userId String
+  codeHash String
+  expiresAt DateTime
+  consumedAt DateTime?
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, createdAt])
+}
+model DailySafetyAdvice {
+  id String @id @default(uuid())
+  title String
+  body String
+  action String?
+  activeFrom DateTime @db.Date
+  createdAt DateTime @default(now())
+  @@unique([activeFrom])
+}
+model LiveSession {
+  id String @id @default(uuid())
+  code String @unique
+  title String
+  hostId String
+  description String?
+  status LiveSessionStatus @default(LOBBY)
+  scheduledFor DateTime?
+  timezone String?
+  questionSeconds Int @default(30)
+  currentQuestion Int @default(0)
+  questionStartedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  finishedAt DateTime?
+  canceledAt DateTime?
+  host User @relation("SessionHost", fields: [hostId], references: [id], onDelete: Cascade)
+  questions LiveSessionQuestion[]
+  players LiveSessionPlayer[]
+  @@index([status, scheduledFor])
+  @@index([hostId, createdAt])
+}
+model LiveSessionQuestion {
+  id String @id @default(uuid())
+  sessionId String
+  position Int
+  prompt String
+  choices Json
+  correctAnswer String
+  explanation String?
+  session LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  answers LiveSessionAnswer[]
+  @@unique([sessionId, position])
+}
+model LiveSessionPlayer {
+  id String @id @default(uuid())
+  sessionId String
+  userId String?
+  guestTokenHash String?
+  guestTokenKey String? @unique
+  displayName String?
+  score Int @default(0)
+  joinedAt DateTime @default(now())
+  lastSeenAt DateTime @default(now())
+  session LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  answers LiveSessionAnswer[]
+  @@unique([sessionId, userId])
+  @@index([sessionId, guestTokenHash])
+  @@index([sessionId, score])
+}
+model LiveSessionAnswer {
+  id String @id @default(uuid())
+  playerId String
+  questionId String
+  answer String
+  correct Boolean
+  points Int
+  answeredAt DateTime @default(now())
+  player LiveSessionPlayer @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  question LiveSessionQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  @@unique([playerId, questionId])
+}
+model PushToken {
+  id String @id @default(uuid())
+  userId String
+  token String @unique
+  platform String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+}
+model NotificationLog {
+  id String @id @default(uuid())
+  userId String
+  kind String
+  title String
+  body String
+  deliveredAt DateTime?
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, createdAt])
+}
+model Subscription {
+  id String @id @default(uuid())
+  userId String @unique
+  plan SubscriptionPlan @default(FREE)
+  status SubscriptionStatus @default(ACTIVE)
+  provider String?
+  providerReference String? @unique
+  currentPeriodEndsAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Profile {
+  id String @id @default(uuid())
+  userId String @unique
+  displayName String?
+  avatarUrl String?
+  timezone String?
+  quietHoursStart Int?
+  quietHoursEnd Int?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Session {
+  id String @id @default(uuid())
+  userId String
+  refreshTokenHash String
+  expiresAt DateTime
+  deviceName String?
+  revokedAt DateTime?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  @@index([userId, expiresAt])
+}
+
+model ScenarioCategory {
+  id String @id @default(uuid())
+  slug String @unique
+  name String
+  description String?
+  scenarios Scenario[]
+  createdAt DateTime @default(now())
+}
+
+model Scenario {
+  id String @id @default(uuid())
+  title String
+  description String
+  categoryId String
+  difficulty Int @default(1)
+  status ScenarioStatus @default(DRAFT)
+  content Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+  category ScenarioCategory @relation(fields: [categoryId], references: [id])
+  attempts ScenarioAttempt[]
+  @@index([status, categoryId, difficulty])
+}
+
+model ScenarioAttempt {
+  id String @id @default(uuid())
+  userId String
+  scenarioId String
+  correct Boolean
+  reactionMs Int?
+  answers Json?
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scenario Scenario @relation(fields: [scenarioId], references: [id])
+  @@index([userId, createdAt])
+  @@index([scenarioId])
+}
+
+model LearningProgress {
+  id String @id @default(uuid())
+  userId String
+  categoryId String
+  completed Int @default(0)
+  mastery Int @default(0)
+  updatedAt DateTime @updatedAt
+  @@unique([userId, categoryId])
+}
+
+model DailyChallenge {
+  id String @id @default(uuid())
+  userId String
+  scenarioId String
+  date DateTime @db.Date
+  completedAt DateTime?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([userId, date])
+  @@index([date])
+}
+
+model AiScan {
+  id String @id @default(uuid())
+  userId String
+  type ScanType
+  risk RiskLevel
+  score Int
+  summary String
+  redFlags Json
+  action String
+  contentHash String
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, createdAt])
+}
+
+model Achievement {
+  id String @id @default(uuid())
+  key String @unique
+  name String
+  description String
+  icon String
+  users UserAchievement[]
+}
+model UserAchievement {
+  id String @id @default(uuid())
+  userId String
+  achievementId String
+  earnedAt DateTime @default(now())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement Achievement @relation(fields: [achievementId], references: [id])
+  @@unique([userId, achievementId])
+}
+model Group {
+  id String @id @default(uuid())
+  name String
+  inviteCode String @unique
+  createdAt DateTime @default(now())
+  members GroupMember[]
+}
+model GroupMember {
+  id String @id @default(uuid())
+  groupId String
+  userId String
+  role MembershipRole @default(MEMBER)
+  group Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([groupId, userId])
+}
+model NotificationPreference {
+  id String @id @default(uuid())
+  userId String @unique
+  dailyChallenge Boolean @default(true)
+  threatAlerts Boolean @default(true)
+  monthlyReport Boolean @default(true)
+  preferredHour Int?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  updatedAt DateTime @updatedAt
+}
+model AuditLog {
+  id String @id @default(uuid())
+  actorId String?
+  action String
+  entityType String
+  entityId String?
+  metadata Json?
+  createdAt DateTime @default(now())
+  @@index([entityType, entityId])
+  @@index([actorId, createdAt])
+}

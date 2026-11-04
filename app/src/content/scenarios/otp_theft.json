@@ -1,0 +1,1166 @@
+{
+  "templates": [
+    {
+      "id": "university_admission_slot_009",
+      "category": "OTP_THEFT",
+      "platform": "WHATSAPP",
+      "difficulty": 3,
+      "phase": 2,
+      "emotion": ["hope", "urgency", "excitement"],
+      "characters": {
+        "admin": {
+          "name": "Mr. Osei (Admissions)",
+          "role": "fake_university_admin"
+        },
+        "student": {
+          "name": "Kofi",
+          "role": "applicant"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mr. Osei (Admissions)",
+          "text": "Hello Kofi, I am contacting you from the university admissions placement board. A slot just opened up for your preferred program."
+        },
+        {
+          "id": "m2",
+          "sender": "Kofi",
+          "text": "Oh thank God! I have been waiting for weeks. What do I need to do?"
+        },
+        {
+          "id": "m3",
+          "sender": "Mr. Osei (Admissions)",
+          "text": "The portal closes in 20 minutes. I am bypassing the queue for you, but the system requires a direct verification code."
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. Osei (Admissions)",
+          "text": "Check your messages. Send me the 6-digit code immediately so I can print your admission letter."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the code quickly so you don't lose the admission slot",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "identity": 15,
+            "financial": 10
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Refuse to send the code and check your portal directly",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "identity": -10,
+            "financial": -5
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake admission + artificial scarcity",
+        "warningSigns": [
+          "Universities do not process admissions via personal WhatsApp chats",
+          "Pressure to act before a 'portal closes'",
+          "System verification codes should never be shared with individuals"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "pastor_prayer_group_010",
+      "category": "ACCOUNT_TAKEOVER",
+      "platform": "WHATSAPP",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["trust", "respect", "obedience"],
+      "characters": {
+        "pastor": {
+          "name": "Rev. Mensah",
+          "role": "impersonator"
+        },
+        "member": {
+          "name": "Kwabena",
+          "role": "church_member"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Rev. Mensah",
+          "text": "God bless you my son. How is the family doing today?"
+        },
+        {
+          "id": "m2",
+          "sender": "Kwabena",
+          "text": "We are doing very well, Reverend. Thank you."
+        },
+        {
+          "id": "m3",
+          "sender": "Rev. Mensah",
+          "text": "Praise God. I am setting up a special 3-day fasting and prayer group on WhatsApp for dedicated members."
+        },
+        {
+          "id": "m4",
+          "sender": "Rev. Mensah",
+          "text": "An SMS with an invite link code was just sent to your number. Please type it here so the system can add you to the group."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Provide the code out of respect for your pastor",
+          "resultKey": "LOSS",
+          "topicKey": "ACCOUNT_TAKEOVER",
+          "riskDelta": {
+            "identity": 20,
+            "password": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Call the pastor on a normal voice call to verify",
+          "resultKey": "SAFE",
+          "topicKey": "ACCOUNT_TAKEOVER",
+          "riskDelta": {
+            "identity": -15,
+            "password": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Authority impersonation + WhatsApp account hijacking",
+        "warningSigns": [
+          "Scammers hack accounts of trusted community figures to target their contacts",
+          "WhatsApp groups do not require SMS codes to join",
+          "The 'invite code' is actually your WhatsApp account registration code"
+        ],
+        "topicKey": "ACCOUNT_TAKEOVER"
+      }
+    },
+    {
+      "id": "ghana_card_sim_link_011",
+      "category": "OTP_THEFT",
+      "platform": "PHONE_CALL",
+      "difficulty": 5,
+      "phase": 4,
+      "emotion": ["fear", "panic", "urgency"],
+      "characters": {
+        "agent": {
+          "name": "NCA Support Center",
+          "role": "fake_government_agent"
+        },
+        "citizen": {
+          "name": "Yaa",
+          "role": "subscriber"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "NCA Support Center",
+          "text": "Hello, am I speaking with Yaa? We are calling from the National Communications Authority regarding your SIM linkage."
+        },
+        {
+          "id": "m2",
+          "sender": "NCA Support Center",
+          "text": "There is a mismatch between your Ghana Card biometric data and your registered number. Your number is scheduled to be deactivated at midnight."
+        },
+        {
+          "id": "m3",
+          "sender": "Yaa",
+          "text": "Eii, but I did the biometric registration last year!"
+        },
+        {
+          "id": "m4",
+          "sender": "NCA Support Center",
+          "text": "Yes, it is a system error. To prevent deactivation without you going to queue at the office, please read out the 6-digit sync code sent to you right now."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the code to prevent your number from being blocked",
+          "resultKey": "LOSS",
+          "topicKey": "SIM_SWAP",
+          "riskDelta": {
+            "financial": 18,
+            "identity": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Hang up and dial the official shortcode to check your SIM status",
+          "resultKey": "SAFE",
+          "topicKey": "SIM_SWAP",
+          "riskDelta": {
+            "financial": -12,
+            "identity": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Regulatory threat + fake remote assistance",
+        "warningSigns": [
+          "Threats of immediate disconnection are designed to induce panic",
+          "Government agencies do not fix biometric mismatches over the phone via OTP",
+          "Scammers use current national issues (like SIM registration) to sound credible"
+        ],
+        "topicKey": "SIM_SWAP"
+      }
+    },
+    {
+      "id": "hr_interview_confirmation_012",
+      "category": "OTP_THEFT",
+      "platform": "WHATSAPP",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["hope", "professionalism", "anxiety"],
+      "characters": {
+        "hr": {
+          "name": "Sandra (HR Dept)",
+          "role": "fake_recruiter"
+        },
+        "applicant": {
+          "name": "Abena",
+          "role": "job_seeker"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Sandra (HR Dept)",
+          "text": "Dear Abena, congratulations. Your CV has been shortlisted for the Remote Data Analyst position you applied for."
+        },
+        {
+          "id": "m2",
+          "sender": "Abena",
+          "text": "Thank you so much! When is the interview?"
+        },
+        {
+          "id": "m3",
+          "sender": "Sandra (HR Dept)",
+          "text": "The online assessment is tomorrow at 10 AM. I am setting up your portal access right now."
+        },
+        {
+          "id": "m4",
+          "sender": "Sandra (HR Dept)",
+          "text": "To generate your unique login ID, the system just triggered a one-time passcode to your number. Please forward it here to confirm your attendance."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Forward the passcode to secure your interview slot",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "identity": 15,
+            "password": 12
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Ask which system generated the code and refuse to share it",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "identity": -10,
+            "password": -8
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake job opportunity + credential harvesting",
+        "warningSigns": [
+          "Legitimate recruiters do not need you to send them OTPs to 'generate login IDs'",
+          "Scammers prey on the desperation of job seekers to bypass logical thinking",
+          "The OTP is likely for your email, LinkedIn, or mobile money account"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "momo_wrong_transfer_reversal_013",
+      "category": "OTP_THEFT",
+      "platform": "PHONE_CALL",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["empathy", "panic", "guilt"],
+      "characters": {
+        "caller": {
+          "name": "Mensa",
+          "role": "frantic_stranger"
+        },
+        "customer": {
+          "name": "Kweku",
+          "role": "momo_user"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mensa",
+          "text": "Please, my brother, I am begging you in the name of God. I just mistakenly sent GHS 800 to your number instead of my sick mother in the hospital."
+        },
+        {
+          "id": "m2",
+          "sender": "Kweku",
+          "text": "Oh, sorry about that. But I haven't received any message showing money entered my account."
+        },
+        {
+          "id": "m3",
+          "sender": "Mensa",
+          "text": "I called MTN customer care, and they said the money is hanging. They are sending a reversal confirmation code to your phone right now."
+        },
+        {
+          "id": "m4",
+          "sender": "Mensa",
+          "text": "Please, the doctor is waiting for the money to buy blood. Just read the code to me so MTN can return the money to me."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the code out of pity to help him get his money back",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "financial": 20,
+            "password": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Tell him to go to the nearest MTN office to handle the reversal",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "financial": -15,
+            "password": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake wrong transfer + Emotional manipulation",
+        "warningSigns": [
+          "Scammers use high-emotion stories (sick relatives, hospital bills) to make you panic and stop thinking logically",
+          "If money doesn't reflect in your account, there is nothing to reverse",
+          "MTN does not send OTPs to customers to approve wrong transfer reversals"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "ges_school_placement_014",
+      "category": "OTP_THEFT",
+      "platform": "WHATSAPP",
+      "difficulty": 5,
+      "phase": 4,
+      "emotion": ["desperation", "hope", "anxiety"],
+      "characters": {
+        "agent": {
+          "name": "Mr. Addo (GES Protocol)",
+          "role": "fake_official"
+        },
+        "parent": {
+          "name": "Auntie Mary",
+          "role": "worried_parent"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mr. Addo (GES Protocol)",
+          "text": "Good evening, Madam. I am looking at your son's CSSPS placement file. He missed out on Presec and was placed in a day school."
+        },
+        {
+          "id": "m2",
+          "sender": "Auntie Mary",
+          "text": "Oh no! Please, is there any way you can help us change it? I am willing to pay."
+        },
+        {
+          "id": "m3",
+          "sender": "Mr. Addo (GES Protocol)",
+          "text": "I can do a backdoor protocol replacement right now before the general portal opens to the public."
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. Addo (GES Protocol)",
+          "text": "I have triggered the system override. Send me the 6-digit verification code that just came to your phone so I can lock in the Presec boarding slot."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the code immediately to secure the preferred school",
+          "resultKey": "LOSS",
+          "topicKey": "ACCOUNT_TAKEOVER",
+          "riskDelta": {
+            "identity": 18,
+            "financial": 15
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Refuse to send the code and block the number",
+          "resultKey": "SAFE",
+          "topicKey": "ACCOUNT_TAKEOVER",
+          "riskDelta": {
+            "identity": -12,
+            "financial": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Exploiting systemic anxiety (School Placements)",
+        "warningSigns": [
+          "Scammers target parents during WAEC/CSSPS placement season when desperation is high",
+          "Official systems do not require you to send OTPs to individual staff members on WhatsApp",
+          "The code is likely an attempt to hijack your WhatsApp to scam your contacts"
+        ],
+        "topicKey": "ACCOUNT_TAKEOVER"
+      }
+    },
+    {
+      "id": "ride_hailing_trip_verification_015",
+      "category": "OTP_THEFT",
+      "platform": "PHONE_CALL",
+      "difficulty": 3,
+      "phase": 2,
+      "emotion": ["impatience", "convenience", "trust"],
+      "characters": {
+        "driver": {
+          "name": "Bolt/Yango Driver",
+          "role": "scammer_driver"
+        },
+        "rider": {
+          "name": "Yaw",
+          "role": "passenger"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Bolt/Yango Driver",
+          "text": "Boss, I am at the junction, but my driver app is freezing and I can't see your exact house number."
+        },
+        {
+          "id": "m2",
+          "sender": "Yaw",
+          "text": "I am standing right in front of the blue gate. Just drive down."
+        },
+        {
+          "id": "m3",
+          "sender": "Bolt/Yango Driver",
+          "text": "The app is saying I need to verify the rider before it gives me the map directions."
+        },
+        {
+          "id": "m4",
+          "sender": "Bolt/Yango Driver",
+          "text": "The office just sent a 4-digit code to your SMS. Please mention it to me so I can start the trip and come to you."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Read the code so the driver can finally pick you up",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "password": 15,
+            "financial": 10
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Cancel the ride immediately and report the driver",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "password": -10,
+            "financial": -5
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Service friction + Credential theft",
+        "warningSigns": [
+          "Ride-hailing apps do not send SMS verification codes to riders for the driver to 'unfreeze' their maps",
+          "Scammers register as drivers purely to harvest phone numbers and trigger password resets or WhatsApp registrations",
+          "Always read the text attached to any OTP you receive—it will usually say what the code is actually for"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "digital_address_renewal_016",
+      "category": "OTP_THEFT",
+      "platform": "SMS",
+      "difficulty": 4,
+      "phase": 3,
+      "emotion": ["compliance", "urgency", "authority"],
+      "characters": {
+        "sender": {
+          "name": "GhanaPostGPS",
+          "role": "fake_service_alert"
+        },
+        "citizen": {
+          "name": "Ama",
+          "role": "homeowner"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "GhanaPostGPS",
+          "text": "Dear Citizen, your Digital Property Address (GhanaPost GPS) registration is expiring in 24 hours."
+        },
+        {
+          "id": "m2",
+          "sender": "GhanaPostGPS",
+          "text": "Failure to renew will result in disconnection from the national utility grid (ECG/Ghana Water)."
+        },
+        {
+          "id": "m3",
+          "sender": "GhanaPostGPS",
+          "text": "To auto-renew for free, click the link below and enter the verification PIN sent to your inbox."
+        },
+        {
+          "id": "m4",
+          "sender": "Ama",
+          "text": "[Thinks to herself] I need my digital address for my bank account, I better do this quickly."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Click the link and enter the PIN to renew the address",
+          "resultKey": "LOSS",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "identity": 18,
+            "password": 12
+          }
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the message; digital addresses do not expire",
+          "resultKey": "SAFE",
+          "topicKey": "OTP_THEFT",
+          "riskDelta": {
+            "identity": -15,
+            "password": -10
+          }
+        }
+      ],
+      "lesson": {
+        "technique": "Fake expiry warning + Authority intimidation",
+        "warningSigns": [
+          "GhanaPost GPS digital addresses do not expire and do not require 'renewal'",
+          "Scammers use the threat of utility disconnection to force immediate compliance",
+          "Links in unexpected SMS messages are almost always phishing attempts designed to steal your credentials"
+        ],
+        "topicKey": "OTP_THEFT"
+      }
+    },
+    {
+      "id": "bank_card_delivery_verification_017",
+      "category": "BANKING_FRAUD",
+      "platform": "PHONE_CALL",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 35,
+      "penaltyAmount": 5000,
+      "isLegit": false,
+      "emotion": ["concern", "trust", "security"],
+      "characters": {
+        "caller": {
+          "name": "Michael",
+          "role": "fake_bank_agent"
+        },
+        "support": {
+          "name": "Ama (Senior Security Officer)",
+          "role": "second_fake_agent"
+        },
+        "customer": {
+          "name": "You",
+          "role": "bank_customer"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Michael",
+          "text": "Good afternoon. I am calling from your bank's card security team. We noticed an unusual login attempt from another device.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "This number is not the bank's official customer care number.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Michael",
+          "text": "You are correct. This is a temporary fraud response line. Let me transfer you to our main security desk so you can verify.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Ama (Senior Security Officer)",
+          "text": "Hello, I understand your concern. We will not ask for your PIN or password. I only need to confirm the last transaction amount so I can lock the suspicious session.",
+          "delay": 5000,
+          "isDistraction": false
+        },
+        {
+          "id": "m5",
+          "sender": "Ama (Senior Security Officer)",
+          "text": "A security code will arrive. Do not share the code. Simply enter it when prompted by the secure verification screen.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Confirm the transaction details and continue the security verification",
+          "resultKey": "LOSS",
+          "topicKey": "BANKING_FRAUD"
+        },
+        {
+          "id": "c2",
+          "text": "End the call and contact the bank using the number on my card",
+          "resultKey": "SAFE",
+          "topicKey": "BANKING_FRAUD"
+        }
+      ],
+      "lesson": {
+        "technique": "Two-person impersonation + manufactured trust",
+        "warningSigns": [
+          "Scammers create a second person to make the first caller look legitimate.",
+          "Security teams do not need login codes sent to your phone.",
+          "Always initiate contact yourself."
+        ],
+        "topicKey": "BANKING_FRAUD"
+      }
+    },
+
+    {
+      "id": "legitimate_bank_fraud_alert_018",
+      "category": "BANKING_SECURITY",
+      "platform": "SMS",
+      "difficulty": 9,
+      "phase": 6,
+      "timeLimit": 30,
+      "penaltyAmount": 0,
+      "isLegit": true,
+      "emotion": ["fear", "uncertainty"],
+      "characters": {
+        "bank": {
+          "name": "Your Bank",
+          "role": "official_alert"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Your Bank",
+          "text": "Alert: A GHS 2,800 online transaction attempt was declined because it requires additional verification.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Your Bank",
+          "text": "If you did not attempt this transaction, open your banking app and freeze your card under Security Settings.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Your Bank",
+          "text": "Customer support is available through the official number displayed inside your banking application.",
+          "delay": 3000,
+          "isDistraction": false
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Open my banking app and check the security section",
+          "resultKey": "SAFE",
+          "topicKey": "BANKING_SECURITY"
+        },
+        {
+          "id": "c2",
+          "text": "Search online for the bank number and call the first result",
+          "resultKey": "LOSS",
+          "topicKey": "BANKING_SECURITY"
+        }
+      ],
+      "lesson": {
+        "technique": "Legitimate security notification",
+        "warningSigns": [
+          "Official alerts direct users to existing apps.",
+          "No OTP or PIN is requested.",
+          "User initiates support contact."
+        ],
+        "topicKey": "BANKING_SECURITY"
+      }
+    },
+
+    {
+      "id": "whatsapp_backup_restore_019",
+      "category": "ACCOUNT_TAKEOVER",
+      "platform": "WHATSAPP",
+      "difficulty": 7,
+      "phase": 4,
+      "timeLimit": 25,
+      "penaltyAmount": 3000,
+      "isLegit": false,
+      "emotion": ["helpfulness", "confusion"],
+      "characters": {
+        "friend": {
+          "name": "Yaw",
+          "role": "hacked_friend"
+        },
+        "helper": {
+          "name": "WhatsApp Recovery Team",
+          "role": "fake_support"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Yaw",
+          "text": "Bro, my WhatsApp is acting strange. Some contacts received messages I didn't send.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Yaw",
+          "text": "Someone claiming to be WhatsApp support said they can fix it.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "WhatsApp Recovery Team",
+          "text": "Hello. We detected a duplicate registration attempt. We can secure your account remotely.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "WhatsApp Recovery Team",
+          "text": "We don't need your password. We only need the six-digit recovery confirmation sent to your phone.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the recovery code because they are fixing the account",
+          "resultKey": "LOSS",
+          "topicKey": "ACCOUNT_TAKEOVER"
+        },
+        {
+          "id": "c2",
+          "text": "Ignore the request and secure WhatsApp through the app settings",
+          "resultKey": "SAFE",
+          "topicKey": "ACCOUNT_TAKEOVER"
+        }
+      ],
+      "lesson": {
+        "technique": "Fake technical support",
+        "warningSigns": [
+          "Support teams do not need login codes.",
+          "Recovery codes belong only to the account owner.",
+          "Attackers often appear after a friend is compromised."
+        ],
+        "topicKey": "ACCOUNT_TAKEOVER"
+      }
+    },
+
+    {
+      "id": "parcel_customs_realistic_020",
+      "category": "DELIVERY_SCAM",
+      "platform": "SMS",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 25,
+      "penaltyAmount": 2500,
+      "isLegit": false,
+      "emotion": ["curiosity", "fear"],
+      "characters": {
+        "sender": {
+          "name": "Courier Ghana",
+          "role": "fake_delivery_service"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Courier Ghana",
+          "text": "Your parcel from UK has arrived at Tema Processing Center. Tracking ID: GH552901.",
+          "delay": 1500,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "I did not order anything. Which company sent this?",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Courier Ghana",
+          "text": "Many customers ask this. It may be a gift. We cannot reveal sender details until identity verification.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Courier Ghana",
+          "text": "Confirm your name and pay GHS 35 customs processing to release the package.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Provide my details and pay the small processing fee",
+          "resultKey": "LOSS",
+          "topicKey": "DELIVERY_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Verify the tracking number through the courier's official website",
+          "resultKey": "SAFE",
+          "topicKey": "DELIVERY_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Unknown parcel + small fee trap",
+        "warningSigns": [
+          "Small payments are used to collect personal information.",
+          "Unknown packages should be verified independently.",
+          "Curiosity is the trigger."
+        ],
+        "topicKey": "DELIVERY_SCAM"
+      }
+    },
+    {
+      "id": "ai_voice_family_emergency_021",
+      "category": "IMPOSTER_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 10,
+      "phase": 6,
+      "timeLimit": 25,
+      "penaltyAmount": 4000,
+      "isLegit": false,
+      "emotion": ["panic", "fear", "family_pressure"],
+      "characters": {
+        "caller": {
+          "name": "Your Brother",
+          "role": "ai_voice_clone"
+        },
+        "helper": {
+          "name": "Police Officer Mensah",
+          "role": "fake_authority"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Your Brother",
+          "text": "Please don't panic. I had a small accident near Kasoa. I am okay but I need help quickly.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Your voice sounds strange. Are you really my brother?",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Your Brother",
+          "text": "The network is bad. My phone microphone is damaged. Please just trust me, I don't have time.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Police Officer Mensah",
+          "text": "Hello, I am assisting him. We need GHS 4,000 for immediate hospital deposit. You can verify later.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the money because the voice sounds like my brother",
+          "resultKey": "LOSS",
+          "topicKey": "IMPOSTER_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Call my brother through his saved contact and verify separately",
+          "resultKey": "SAFE",
+          "topicKey": "IMPOSTER_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "AI voice cloning + emergency pressure",
+        "warningSigns": [
+          "Voice alone is no longer reliable proof.",
+          "Urgency prevents verification.",
+          "Use a separate contact method."
+        ],
+        "topicKey": "IMPOSTER_SCAM"
+      }
+    },
+
+    {
+      "id": "landlord_verification_trap_022",
+      "category": "REAL_ESTATE_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 8,
+      "phase": 5,
+      "timeLimit": 40,
+      "penaltyAmount": 3000,
+      "isLegit": false,
+      "emotion": ["hope", "trust", "housing_pressure"],
+      "characters": {
+        "agent": {
+          "name": "Mr. Boateng",
+          "role": "fake_landlord"
+        },
+        "tenant": {
+          "name": "You",
+          "role": "house_hunter"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Mr. Boateng",
+          "text": "I understand your concern. Many people are being scammed with houses, so I encourage verification.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "Mr. Boateng",
+          "text": "I can send my Ghana Card and landlord documents for your confidence.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Mr. Boateng",
+          "text": "However, several people want this apartment. Pay GHS 3,000 holding fee while you verify the documents.",
+          "delay": 4000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. Boateng",
+          "text": "I am sending the card to tell you how genuine I am.",
+          "delay": 3000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Send the holding fee because he provided documents",
+          "resultKey": "LOSS",
+          "topicKey": "REAL_ESTATE_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Inspect the property and verify ownership before paying",
+          "resultKey": "SAFE",
+          "topicKey": "REAL_ESTATE_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Trust building before fraud",
+        "warningSigns": [
+          "Documents can be copied or forged.",
+          "Verification should happen before payment.",
+          "Refund promises are not protection."
+        ],
+        "topicKey": "REAL_ESTATE_SCAM"
+      }
+    },
+
+    {
+      "id": "investment_friend_testimonial_023",
+      "category": "INVESTMENT_SCAM",
+      "platform": "WHATSAPP",
+      "difficulty": 9,
+      "phase": 6,
+      "timeLimit": 35,
+      "penaltyAmount": 8000,
+      "isLegit": false,
+      "emotion": ["trust", "greed", "social_pressure"],
+      "characters": {
+        "friend": {
+          "name": "Kojo",
+          "role": "possible_friend"
+        },
+        "advisor": {
+          "name": "Mr. James",
+          "role": "fake_investment_manager"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Kojo",
+          "text": "Bro, remember I told you about that investment group? I withdrew GHS 2,000 profit today.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "Is it regulated? How does the company make money?",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Mr. James",
+          "text": "Good question. We appreciate careful investors. We can send our certificate and trading reports.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Mr. James",
+          "text": "Your friend is already upgraded. New investors must join before Friday to receive the same rate.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Join before Friday because my friend is already earning",
+          "resultKey": "LOSS",
+          "topicKey": "INVESTMENT_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Verify the company independently before investing",
+          "resultKey": "SAFE",
+          "topicKey": "INVESTMENT_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Social proof + fake transparency",
+        "warningSigns": [
+          "Showing documents does not prove legitimacy.",
+          "Pressure to join quickly is a warning sign.",
+          "Friends can unknowingly promote scams."
+        ],
+        "topicKey": "INVESTMENT_SCAM"
+      }
+    },
+
+    {
+      "id": "police_online_complaint_024",
+      "category": "AUTHORITY_SCAM",
+      "platform": "PHONE_CALL",
+      "difficulty": 9,
+      "phase": 6,
+      "timeLimit": 30,
+      "penaltyAmount": 2500,
+      "isLegit": false,
+      "emotion": ["fear", "respect", "confusion"],
+      "characters": {
+        "officer": {
+          "name": "Inspector Osei",
+          "role": "fake_police"
+        },
+        "station": {
+          "name": "Station Clerk",
+          "role": "second_fake_person"
+        }
+      },
+      "conversation": [
+        {
+          "id": "m1",
+          "sender": "Inspector Osei",
+          "text": "Your number was mentioned in an online fraud complaint. I am calling before issuing a formal summons.",
+          "delay": 2000,
+          "isDistraction": false
+        },
+        {
+          "id": "m2",
+          "sender": "You",
+          "text": "How do I know you are really police?",
+          "delay": 2500,
+          "isDistraction": false
+        },
+        {
+          "id": "m3",
+          "sender": "Inspector Osei",
+          "text": "Fair question. I will transfer you to the station clerk to confirm my identity.",
+          "delay": 3000,
+          "isDistraction": false
+        },
+        {
+          "id": "m4",
+          "sender": "Station Clerk",
+          "text": "Yes, Inspector Osei works here. To close this issue quietly, pay administrative processing fees of GHS 2,500.",
+          "delay": 4000,
+          "isDistraction": true
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Pay the fee to avoid a police case",
+          "resultKey": "LOSS",
+          "topicKey": "AUTHORITY_SCAM"
+        },
+        {
+          "id": "c2",
+          "text": "Visit the police station physically to confirm the complaint",
+          "resultKey": "SAFE",
+          "topicKey": "AUTHORITY_SCAM"
+        }
+      ],
+      "lesson": {
+        "technique": "Authority verification manipulation",
+        "warningSigns": [
+          "Scammers create fake confirmation channels.",
+          "Real verification should happen independently.",
+          "Fear makes people accept unusual payments."
+        ],
+        "topicKey": "AUTHORITY_SCAM"
+      }
+    }
+  ]
+}

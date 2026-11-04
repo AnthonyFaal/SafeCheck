@@ -127,7 +127,7 @@ For a physical Android device, use `http://<computer-lan-ip>:3000/api/v1` instea
 npm run build --prefix backend
 npm test --prefix backend -- --runInBand
 python -m pytest safecheck-inference/tests
-npx tsc --noEmit --project app/tsconfig.json
+npm exec --prefix app -- tsc --noEmit --project app/tsconfig.json
 ```
 
 The Python tests require the inference service dependencies from `safecheck-inference/requirements.txt`. Tests that initialize the inference engine also require the private model bundle.
